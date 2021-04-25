@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace WindowsFormsProiect
 {
-    public partial class Form1 : Form
+    public partial class FormInitial : Form
     {
-        public Form1()
+        public FormInitial()
         {
             InitializeComponent();
+        }
+
+        private void btnIeesire_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
