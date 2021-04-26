@@ -46,16 +46,53 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormAdaugareMedic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdaugareMedic.Designer.cs">
+      <DependentUpon>FormAdaugareMedic.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormInitial.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormInitial.Designer.cs">
       <DependentUpon>FormInitial.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMedici.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMedici.Designer.cs">
+      <DependentUpon>FormMedici.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPacienti.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPacienti.Designer.cs">
+      <DependentUpon>FormPacienti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRetete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRetete.Designer.cs">
+      <DependentUpon>FormRetete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStatistici.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStatistici.Designer.cs">
+      <DependentUpon>FormStatistici.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Medic.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormAdaugareMedic.resx">
+      <DependentUpon>FormAdaugareMedic.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormInitial.resx">
       <DependentUpon>FormInitial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMedici.resx">
+      <DependentUpon>FormMedici.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

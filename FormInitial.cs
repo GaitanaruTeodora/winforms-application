@@ -17,7 +17,40 @@ namespace WindowsFormsProiect
             InitializeComponent();
         }
 
-        private void btnIeesire_Click(object sender, EventArgs e)
+        
+        private void btnMedici_Click(object sender, EventArgs e)
+        {
+            FormMedici form = new FormMedici();
+            this.Hide();
+            form.ShowDialog();
+            this.Close();
+        }
+
+        private void btnPacienti_Click(object sender, EventArgs e)
+        {
+            FormPacienti form = new FormPacienti();
+            this.Hide();
+            form.ShowDialog();
+            this.Close();
+        }
+
+        private void btnRetete_Click(object sender, EventArgs e)
+        {
+            FormRetete form = new FormRetete();
+            this.Hide();
+            form.ShowDialog();
+            this.Close();
+        }
+
+        private void btnStatistici_Click(object sender, EventArgs e)
+        {
+            FormStatistici form = new FormStatistici();
+            this.Hide();
+            form.ShowDialog();
+            this.Close();
+        }
+
+        private void btnIesire_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
