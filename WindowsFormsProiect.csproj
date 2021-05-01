@@ -52,6 +52,18 @@
     <Compile Include="FormAdaugareMedic.Designer.cs">
       <DependentUpon>FormAdaugareMedic.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAdaugarePacient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdaugarePacient.Designer.cs">
+      <DependentUpon>FormAdaugarePacient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAdaugareReteta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdaugareReteta.Designer.cs">
+      <DependentUpon>FormAdaugareReteta.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormInitial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,16 +95,30 @@
       <DependentUpon>FormStatistici.cs</DependentUpon>
     </Compile>
     <Compile Include="Medic.cs" />
+    <Compile Include="Pacient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reteta.cs" />
     <EmbeddedResource Include="FormAdaugareMedic.resx">
       <DependentUpon>FormAdaugareMedic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdaugarePacient.resx">
+      <DependentUpon>FormAdaugarePacient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdaugareReteta.resx">
+      <DependentUpon>FormAdaugareReteta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormInitial.resx">
       <DependentUpon>FormInitial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMedici.resx">
       <DependentUpon>FormMedici.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPacienti.resx">
+      <DependentUpon>FormPacienti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRetete.resx">
+      <DependentUpon>FormRetete.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
