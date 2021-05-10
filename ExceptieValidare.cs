@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsProiect
 {
-    public class Reteta
+    class ExceptieValidare : Exception
     {
-        private int id;
-        
+        public override string Message
+        {
+            get { return "Exceptie validare date"; }
+        }
     }
 }

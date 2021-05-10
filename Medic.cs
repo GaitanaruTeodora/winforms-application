@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace WindowsFormsProiect
 {   
     [Serializable]
-    internal class Medic
+    public class Medic
     {
         private string nume;
         private string prenume;

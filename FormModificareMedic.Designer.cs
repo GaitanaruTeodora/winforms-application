@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsProiect
 {
-    partial class FormAdaugareMedic
+    partial class FormModificareMedic
     {
         /// <summary>
         /// Required designer variable.
@@ -35,12 +35,12 @@
             this.tbParafa = new System.Windows.Forms.TextBox();
             this.lbParafa = new System.Windows.Forms.Label();
             this.lbGrad = new System.Windows.Forms.Label();
-            this.cbGrad = new System.Windows.Forms.ComboBox();
-            this.tbSpecialitate = new System.Windows.Forms.TextBox();
+            this.comboGrad = new System.Windows.Forms.ComboBox();
             this.lbSpecialitate = new System.Windows.Forms.Label();
             this.btnSalvare = new System.Windows.Forms.Button();
             this.btnGolire = new System.Windows.Forms.Button();
             this.btnRenunta = new System.Windows.Forms.Button();
+            this.comboSpecialitate = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lbNume
@@ -100,24 +100,17 @@
             this.lbGrad.TabIndex = 6;
             this.lbGrad.Text = "Grad";
             // 
-            // cbGrad
+            // comboGrad
             // 
-            this.cbGrad.FormattingEnabled = true;
-            this.cbGrad.Items.AddRange(new object[] {
+            this.comboGrad.FormattingEnabled = true;
+            this.comboGrad.Items.AddRange(new object[] {
             "Medic rezident",
             "Medic specialist",
             "Medic primar"});
-            this.cbGrad.Location = new System.Drawing.Point(33, 289);
-            this.cbGrad.Name = "cbGrad";
-            this.cbGrad.Size = new System.Drawing.Size(219, 24);
-            this.cbGrad.TabIndex = 7;
-            // 
-            // tbSpecialitate
-            // 
-            this.tbSpecialitate.Location = new System.Drawing.Point(33, 360);
-            this.tbSpecialitate.Name = "tbSpecialitate";
-            this.tbSpecialitate.Size = new System.Drawing.Size(219, 22);
-            this.tbSpecialitate.TabIndex = 9;
+            this.comboGrad.Location = new System.Drawing.Point(33, 289);
+            this.comboGrad.Name = "comboGrad";
+            this.comboGrad.Size = new System.Drawing.Size(219, 24);
+            this.comboGrad.TabIndex = 7;
             // 
             // lbSpecialitate
             // 
@@ -167,18 +160,30 @@
             this.btnRenunta.UseVisualStyleBackColor = false;
             this.btnRenunta.Click += new System.EventHandler(this.btnRenunta_Click);
             // 
-            // FormAdaugareMedic
+            // comboSpecialitate
+            // 
+            this.comboSpecialitate.FormattingEnabled = true;
+            this.comboSpecialitate.Items.AddRange(new object[] {
+            "Medic rezident",
+            "Medic specialist",
+            "Medic primar"});
+            this.comboSpecialitate.Location = new System.Drawing.Point(33, 360);
+            this.comboSpecialitate.Name = "comboSpecialitate";
+            this.comboSpecialitate.Size = new System.Drawing.Size(219, 24);
+            this.comboSpecialitate.TabIndex = 13;
+            // 
+            // FormModificareMedic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(143)))), ((int)(((byte)(190)))));
             this.ClientSize = new System.Drawing.Size(396, 482);
+            this.Controls.Add(this.comboSpecialitate);
             this.Controls.Add(this.btnRenunta);
             this.Controls.Add(this.btnGolire);
             this.Controls.Add(this.btnSalvare);
-            this.Controls.Add(this.tbSpecialitate);
             this.Controls.Add(this.lbSpecialitate);
-            this.Controls.Add(this.cbGrad);
+            this.Controls.Add(this.comboGrad);
             this.Controls.Add(this.lbGrad);
             this.Controls.Add(this.tbParafa);
             this.Controls.Add(this.lbParafa);
@@ -187,8 +192,9 @@
             this.Controls.Add(this.tbNume);
             this.Controls.Add(this.lbNume);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "FormAdaugareMedic";
+            this.Name = "FormModificareMedic";
             this.Text = "FormAdaugareMedic";
+            this.Load += new System.EventHandler(this.FormModificareMedic_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,11 +209,11 @@
         private System.Windows.Forms.TextBox tbParafa;
         private System.Windows.Forms.Label lbParafa;
         private System.Windows.Forms.Label lbGrad;
-        private System.Windows.Forms.ComboBox cbGrad;
-        private System.Windows.Forms.TextBox tbSpecialitate;
+        private System.Windows.Forms.ComboBox comboGrad;
         private System.Windows.Forms.Label lbSpecialitate;
         private System.Windows.Forms.Button btnSalvare;
         private System.Windows.Forms.Button btnGolire;
         private System.Windows.Forms.Button btnRenunta;
+        private System.Windows.Forms.ComboBox comboSpecialitate;
     }
 }

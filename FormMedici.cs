@@ -24,19 +24,33 @@ namespace WindowsFormsProiect
             listaMedici = new List<Medic>();
         }
 
+        private void golireFormular()
+        {
+            tbNume.Clear();
+            tbPrenume.Clear();
+            tbParafa.Clear();
+            comboGrad.SelectedItem = null;
+            comboSpecialitate.SelectedItem = null;
+        }
         private void btnAdaugare_Click(object sender, EventArgs e)
         {
-            FormAdaugareMedic form = new FormAdaugareMedic();
-            listaMedici = form.ListaM;
-            //this.Hide();
-            form.ShowDialog();
-            //this.Close();
-            btnAfisare_Click(sender, e);
+
+            Medic medic = new Medic();
+            medic.Nume = tbNume.Text;
+            medic.Prenume = tbPrenume.Text;
+            medic.Parafa = tbParafa.Text;
+            if (comboGrad.SelectedItem != null)
+                medic.Grad = comboGrad.SelectedItem.ToString();
+            if (comboSpecialitate.SelectedItem != null)
+                medic.Specialitate = comboSpecialitate.SelectedItem.ToString();
+            listaMedici.Add(medic);
+            golireFormular();
 
         }
 
-        private void btnAfisare_Click(object sender, EventArgs e)
+        private void populareLista()
         {
+            golireLista();
             if (listaMedici.Count != 0)
             {
                 foreach (Medic medic in listaMedici)
@@ -56,15 +70,24 @@ namespace WindowsFormsProiect
             }
         }
 
-        private void btnGolireLista_Click(object sender, EventArgs e)
+        private void golireLista()
         {
             listViewMedic.Items.Clear();
+        }
+        private void btnAfisare_Click(object sender, EventArgs e)
+        {
+            populareLista();
+        }
+
+        private void btnGolireLista_Click(object sender, EventArgs e)
+        {
+            golireLista();
         }
 
         private void homeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormInitial form = new FormInitial();
-            form.Show();
+            this.Close();
+            
             
         }
 
@@ -89,6 +112,26 @@ namespace WindowsFormsProiect
             BinaryFormatter bf = new BinaryFormatter();
             listViewMedic.Text = (string)bf.Deserialize(file);
             file.Close();
+        }
+
+        private void listViewMedic_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+                cmMedici.Show(Cursor.Position.X, Cursor.Position.Y);
+        }
+
+        private void modificareTSM_Click(object sender, EventArgs e)
+        {
+            if(listViewMedic.SelectedItems[0]!=null)
+            {
+                ListViewItem item = listViewMedic.SelectedItems[0];
+                int index = item.Index;
+                Medic medic = listaMedici[index];
+                FormModificareMedic form = new FormModificareMedic(medic);
+                form.ShowDialog();
+            }
+           
+            
         }
 
 

@@ -49,7 +49,6 @@
             this.btnDeserializareXML = new System.Windows.Forms.ToolStripMenuItem();
             this.fisierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExportTxt = new System.Windows.Forms.ToolStripMenuItem();
-            this.iesireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnGolire = new System.Windows.Forms.Button();
             this.btnAdaugare = new System.Windows.Forms.Button();
             this.tbLocalitate = new System.Windows.Forms.TextBox();
@@ -69,9 +68,11 @@
             this.cmPacient = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.modificareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stergereToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.epNume = new System.Windows.Forms.ErrorProvider(this.components);
             this.msPacienti.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epPacienti)).BeginInit();
             this.cmPacient.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epNume)).BeginInit();
             this.SuspendLayout();
             // 
             // lvPacienti
@@ -97,7 +98,7 @@
             // Nume
             // 
             this.Nume.Text = "Nume";
-            this.Nume.Width = 89;
+            this.Nume.Width = 78;
             // 
             // Prenume
             // 
@@ -107,7 +108,7 @@
             // Cnp
             // 
             this.Cnp.Text = "Cnp";
-            this.Cnp.Width = 71;
+            this.Cnp.Width = 82;
             // 
             // Sex
             // 
@@ -116,12 +117,12 @@
             // DataN
             // 
             this.DataN.Text = "Data nastere";
-            this.DataN.Width = 91;
+            this.DataN.Width = 93;
             // 
             // Localitate
             // 
             this.Localitate.Text = "Localitate";
-            this.Localitate.Width = 74;
+            this.Localitate.Width = 103;
             // 
             // btnAfisare
             // 
@@ -153,8 +154,7 @@
             this.homeToolStripMenuItem,
             this.optiuniToolStripMenuItem,
             this.serializareXMLToolStripMenuItem,
-            this.fisierToolStripMenuItem,
-            this.iesireToolStripMenuItem});
+            this.fisierToolStripMenuItem});
             this.msPacienti.Location = new System.Drawing.Point(0, 0);
             this.msPacienti.Name = "msPacienti";
             this.msPacienti.Size = new System.Drawing.Size(970, 31);
@@ -168,6 +168,7 @@
             this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
             this.homeToolStripMenuItem.Size = new System.Drawing.Size(98, 27);
             this.homeToolStripMenuItem.Text = "Home";
+            this.homeToolStripMenuItem.Click += new System.EventHandler(this.homeToolStripMenuItem_Click);
             // 
             // optiuniToolStripMenuItem
             // 
@@ -182,14 +183,14 @@
             // btnSerializareBinara
             // 
             this.btnSerializareBinara.Name = "btnSerializareBinara";
-            this.btnSerializareBinara.Size = new System.Drawing.Size(224, 28);
+            this.btnSerializareBinara.Size = new System.Drawing.Size(216, 28);
             this.btnSerializareBinara.Text = "Serializare";
             this.btnSerializareBinara.Click += new System.EventHandler(this.serializareToolStripMenuItem1_Click);
             // 
             // btnDeserializareBinara
             // 
             this.btnDeserializareBinara.Name = "btnDeserializareBinara";
-            this.btnDeserializareBinara.Size = new System.Drawing.Size(224, 28);
+            this.btnDeserializareBinara.Size = new System.Drawing.Size(216, 28);
             this.btnDeserializareBinara.Text = "Deserializare";
             this.btnDeserializareBinara.Click += new System.EventHandler(this.deserializareToolStripMenuItem1_Click);
             // 
@@ -205,14 +206,14 @@
             // btnSerializareXML
             // 
             this.btnSerializareXML.Name = "btnSerializareXML";
-            this.btnSerializareXML.Size = new System.Drawing.Size(224, 26);
+            this.btnSerializareXML.Size = new System.Drawing.Size(211, 26);
             this.btnSerializareXML.Text = "Serializare XML";
             this.btnSerializareXML.Click += new System.EventHandler(this.btnSerializareXML_Click);
             // 
             // btnDeserializareXML
             // 
             this.btnDeserializareXML.Name = "btnDeserializareXML";
-            this.btnDeserializareXML.Size = new System.Drawing.Size(224, 26);
+            this.btnDeserializareXML.Size = new System.Drawing.Size(211, 26);
             this.btnDeserializareXML.Text = "Deserializare XML";
             this.btnDeserializareXML.Click += new System.EventHandler(this.btnDeserializareXML_Click);
             // 
@@ -227,15 +228,9 @@
             // btnExportTxt
             // 
             this.btnExportTxt.Name = "btnExportTxt";
-            this.btnExportTxt.Size = new System.Drawing.Size(224, 26);
+            this.btnExportTxt.Size = new System.Drawing.Size(135, 26);
             this.btnExportTxt.Text = "Export";
             this.btnExportTxt.Click += new System.EventHandler(this.btnExportTxt_Click);
-            // 
-            // iesireToolStripMenuItem
-            // 
-            this.iesireToolStripMenuItem.Name = "iesireToolStripMenuItem";
-            this.iesireToolStripMenuItem.Size = new System.Drawing.Size(58, 27);
-            this.iesireToolStripMenuItem.Text = "&Iesire";
             // 
             // btnGolire
             // 
@@ -263,6 +258,8 @@
             this.tbLocalitate.Name = "tbLocalitate";
             this.tbLocalitate.Size = new System.Drawing.Size(364, 22);
             this.tbLocalitate.TabIndex = 26;
+            this.tbLocalitate.Validating += new System.ComponentModel.CancelEventHandler(this.tbLocalitate_Validating);
+            this.tbLocalitate.Validated += new System.EventHandler(this.tbLocalitate_Validated);
             // 
             // lbLocalitate
             // 
@@ -280,13 +277,13 @@
             this.rbMasculin.Name = "rbMasculin";
             this.rbMasculin.Size = new System.Drawing.Size(84, 21);
             this.rbMasculin.TabIndex = 24;
-            this.rbMasculin.TabStop = true;
             this.rbMasculin.Text = "Masculin";
             this.rbMasculin.UseVisualStyleBackColor = true;
             // 
             // rbFeminin
             // 
             this.rbFeminin.AutoSize = true;
+            this.rbFeminin.Checked = true;
             this.rbFeminin.Location = new System.Drawing.Point(94, 202);
             this.rbFeminin.Name = "rbFeminin";
             this.rbFeminin.Size = new System.Drawing.Size(78, 21);
@@ -312,6 +309,8 @@
             this.tbCnp.Size = new System.Drawing.Size(147, 22);
             this.tbCnp.TabIndex = 22;
             this.tbCnp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCnp_KeyPress);
+            this.tbCnp.Validating += new System.ComponentModel.CancelEventHandler(this.tbCnp_Validating);
+            this.tbCnp.Validated += new System.EventHandler(this.tbCnp_Validated);
             // 
             // tbPrenume
             // 
@@ -319,6 +318,8 @@
             this.tbPrenume.Name = "tbPrenume";
             this.tbPrenume.Size = new System.Drawing.Size(147, 22);
             this.tbPrenume.TabIndex = 21;
+            this.tbPrenume.Validating += new System.ComponentModel.CancelEventHandler(this.tbPrenume_Validating);
+            this.tbPrenume.Validated += new System.EventHandler(this.tbPrenume_Validated);
             // 
             // tbNume
             // 
@@ -326,6 +327,8 @@
             this.tbNume.Name = "tbNume";
             this.tbNume.Size = new System.Drawing.Size(147, 22);
             this.tbNume.TabIndex = 20;
+            this.tbNume.Validating += new System.ComponentModel.CancelEventHandler(this.tbNume_Validating);
+            this.tbNume.Validated += new System.EventHandler(this.tbNume_Validated_1);
             // 
             // lbPrenume
             // 
@@ -366,6 +369,8 @@
             // dateTimePickerDataN
             // 
             this.dateTimePickerDataN.Location = new System.Drawing.Point(37, 283);
+            this.dateTimePickerDataN.MaxDate = new System.DateTime(2021, 6, 1, 0, 0, 0, 0);
+            this.dateTimePickerDataN.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dateTimePickerDataN.Name = "dateTimePickerDataN";
             this.dateTimePickerDataN.Size = new System.Drawing.Size(200, 22);
             this.dateTimePickerDataN.TabIndex = 14;
@@ -389,12 +394,18 @@
             this.modificareToolStripMenuItem.Name = "modificareToolStripMenuItem";
             this.modificareToolStripMenuItem.Size = new System.Drawing.Size(150, 24);
             this.modificareToolStripMenuItem.Text = "Modificare";
+            this.modificareToolStripMenuItem.Click += new System.EventHandler(this.modificareToolStripMenuItem_Click);
             // 
             // stergereToolStripMenuItem
             // 
             this.stergereToolStripMenuItem.Name = "stergereToolStripMenuItem";
             this.stergereToolStripMenuItem.Size = new System.Drawing.Size(150, 24);
             this.stergereToolStripMenuItem.Text = "Stergere";
+            this.stergereToolStripMenuItem.Click += new System.EventHandler(this.stergereToolStripMenuItem_Click);
+            // 
+            // epNume
+            // 
+            this.epNume.ContainerControl = this;
             // 
             // FormPacienti
             // 
@@ -427,6 +438,7 @@
             this.msPacienti.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epPacienti)).EndInit();
             this.cmPacient.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.epNume)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -440,7 +452,6 @@
         private System.Windows.Forms.MenuStrip msPacienti;
         private System.Windows.Forms.ToolStripMenuItem homeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optiuniToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem iesireToolStripMenuItem;
         private System.Windows.Forms.ColumnHeader Nume;
         private System.Windows.Forms.ColumnHeader Prenume;
         private System.Windows.Forms.ColumnHeader Cnp;
@@ -473,5 +484,6 @@
         private System.Windows.Forms.ToolStripMenuItem stergereToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem btnSerializareXML;
         private System.Windows.Forms.ToolStripMenuItem btnDeserializareXML;
+        private System.Windows.Forms.ErrorProvider epNume;
     }
 }

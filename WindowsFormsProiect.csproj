@@ -46,17 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormAdaugareMedic.cs">
+    <Compile Include="ExceptieValidare.cs" />
+    <Compile Include="FormModificareMedic.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAdaugareMedic.Designer.cs">
-      <DependentUpon>FormAdaugareMedic.cs</DependentUpon>
+    <Compile Include="FormModificareMedic.Designer.cs">
+      <DependentUpon>FormModificareMedic.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAdaugarePacient.cs">
+    <Compile Include="FormModificarePacient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAdaugarePacient.Designer.cs">
-      <DependentUpon>FormAdaugarePacient.cs</DependentUpon>
+    <Compile Include="FormModificarePacient.Designer.cs">
+      <DependentUpon>FormModificarePacient.cs</DependentUpon>
     </Compile>
     <Compile Include="FormAdaugareReteta.cs">
       <SubType>Form</SubType>
@@ -99,11 +100,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reteta.cs" />
-    <EmbeddedResource Include="FormAdaugareMedic.resx">
-      <DependentUpon>FormAdaugareMedic.cs</DependentUpon>
+    <EmbeddedResource Include="FormModificareMedic.resx">
+      <DependentUpon>FormModificareMedic.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAdaugarePacient.resx">
-      <DependentUpon>FormAdaugarePacient.cs</DependentUpon>
+    <EmbeddedResource Include="FormModificarePacient.resx">
+      <DependentUpon>FormModificarePacient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAdaugareReteta.resx">
       <DependentUpon>FormAdaugareReteta.cs</DependentUpon>
@@ -119,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormRetete.resx">
       <DependentUpon>FormRetete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStatistici.resx">
+      <DependentUpon>FormStatistici.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

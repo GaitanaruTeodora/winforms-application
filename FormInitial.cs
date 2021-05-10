@@ -23,7 +23,7 @@ namespace WindowsFormsProiect
             FormMedici form = new FormMedici();
             this.Hide();
             form.ShowDialog();
-            this.Close();
+            this.Show();
         }
 
         private void btnPacienti_Click(object sender, EventArgs e)
@@ -31,7 +31,7 @@ namespace WindowsFormsProiect
             FormPacienti form = new FormPacienti();
             this.Hide();
             form.ShowDialog();
-            this.Close();
+            this.Show();
         }
 
         private void btnRetete_Click(object sender, EventArgs e)
