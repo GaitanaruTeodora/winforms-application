@@ -14,6 +14,7 @@ namespace WindowsFormsProiect
         private string prenume;
         private string cnp;
         private string sex;
+        private int varsta;
         private DateTime dataNastere;
         private string localitate;
         

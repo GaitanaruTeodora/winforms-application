@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExceptieValidare.cs" />
+    <Compile Include="FormDragAndDrop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDragAndDrop.Designer.cs">
+      <DependentUpon>FormDragAndDrop.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormModificareMedic.cs">
       <SubType>Form</SubType>
     </Compile>

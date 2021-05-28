@@ -8,7 +8,24 @@ namespace WindowsFormsProiect
 {
     public class Reteta
     {
-        private int id;
-        
+        public int Id { get; set; }
+        public string Serie { get; set; }
+        public int NrReteta { get; set; }
+        public DateTime DataReteta { get; set; }
+        public string Parafa { get; set; }
+        public string Cnp { get; set; }
+        public string Categorie { get; set; }
+
+        public Reteta(int id, string serie, int nrReteta, DateTime dataReteta, string parafa, string cnp, string categorie)
+        {
+            Id = id;
+            Serie = serie;
+            NrReteta = nrReteta;
+            DataReteta = dataReteta;
+            Parafa = parafa;
+            Cnp = cnp;
+            Categorie = categorie;
+        }
+
     }
 }

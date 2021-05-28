@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tbLocalitate = new System.Windows.Forms.TextBox();
             this.lbLocalitate = new System.Windows.Forms.Label();
@@ -46,7 +47,11 @@
             this.btnModificare = new System.Windows.Forms.Button();
             this.btnGolire = new System.Windows.Forms.Button();
             this.btnRenunta = new System.Windows.Forms.Button();
+            this.epNume = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epCnp = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epNume)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epCnp)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -124,6 +129,8 @@
             this.tbCnp.Name = "tbCnp";
             this.tbCnp.Size = new System.Drawing.Size(149, 22);
             this.tbCnp.TabIndex = 7;
+            this.tbCnp.Validating += new System.ComponentModel.CancelEventHandler(this.tbCnp_Validating);
+            this.tbCnp.Validated += new System.EventHandler(this.tbCnp_Validated);
             // 
             // tbPrenume
             // 
@@ -138,6 +145,8 @@
             this.tbNume.Name = "tbNume";
             this.tbNume.Size = new System.Drawing.Size(147, 22);
             this.tbNume.TabIndex = 5;
+            this.tbNume.Validating += new System.ComponentModel.CancelEventHandler(this.tbNume_Validating);
+            this.tbNume.Validated += new System.EventHandler(this.tbNume_Validated);
             // 
             // label4
             // 
@@ -220,6 +229,14 @@
             this.btnRenunta.UseVisualStyleBackColor = true;
             this.btnRenunta.Click += new System.EventHandler(this.btnRenunta_Click);
             // 
+            // epNume
+            // 
+            this.epNume.ContainerControl = this;
+            // 
+            // epCnp
+            // 
+            this.epCnp.ContainerControl = this;
+            // 
             // FormModificarePacient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -235,6 +252,8 @@
             this.Load += new System.EventHandler(this.FormModificarePacient_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epNume)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epCnp)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -259,5 +278,7 @@
         private System.Windows.Forms.Button btnModificare;
         private System.Windows.Forms.Button btnGolire;
         private System.Windows.Forms.Button btnRenunta;
+        private System.Windows.Forms.ErrorProvider epNume;
+        private System.Windows.Forms.ErrorProvider epCnp;
     }
 }

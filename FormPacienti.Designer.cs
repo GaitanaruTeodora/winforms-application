@@ -48,7 +48,6 @@
             this.btnSerializareXML = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDeserializareXML = new System.Windows.Forms.ToolStripMenuItem();
             this.fisierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnExportTxt = new System.Windows.Forms.ToolStripMenuItem();
             this.btnGolire = new System.Windows.Forms.Button();
             this.btnAdaugare = new System.Windows.Forms.Button();
             this.tbLocalitate = new System.Windows.Forms.TextBox();
@@ -69,6 +68,10 @@
             this.modificareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stergereToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.epNume = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnPrint = new System.Windows.Forms.ToolStripMenuItem();
+            this.pageSetupDialog = new System.Windows.Forms.PageSetupDialog();
+            this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.msPacienti.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epPacienti)).BeginInit();
             this.cmPacient.SuspendLayout();
@@ -154,6 +157,7 @@
             this.homeToolStripMenuItem,
             this.optiuniToolStripMenuItem,
             this.serializareXMLToolStripMenuItem,
+            this.btnPrint,
             this.fisierToolStripMenuItem});
             this.msPacienti.Location = new System.Drawing.Point(0, 0);
             this.msPacienti.Name = "msPacienti";
@@ -167,7 +171,7 @@
             this.homeToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("homeToolStripMenuItem.Image")));
             this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
             this.homeToolStripMenuItem.Size = new System.Drawing.Size(98, 27);
-            this.homeToolStripMenuItem.Text = "Home";
+            this.homeToolStripMenuItem.Text = "&Home";
             this.homeToolStripMenuItem.Click += new System.EventHandler(this.homeToolStripMenuItem_Click);
             // 
             // optiuniToolStripMenuItem
@@ -199,38 +203,31 @@
             this.serializareXMLToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnSerializareXML,
             this.btnDeserializareXML});
+            this.serializareXMLToolStripMenuItem.Font = new System.Drawing.Font("Californian FB", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.serializareXMLToolStripMenuItem.Name = "serializareXMLToolStripMenuItem";
-            this.serializareXMLToolStripMenuItem.Size = new System.Drawing.Size(125, 27);
+            this.serializareXMLToolStripMenuItem.Size = new System.Drawing.Size(121, 27);
             this.serializareXMLToolStripMenuItem.Text = "Serializare XML";
             // 
             // btnSerializareXML
             // 
             this.btnSerializareXML.Name = "btnSerializareXML";
-            this.btnSerializareXML.Size = new System.Drawing.Size(211, 26);
+            this.btnSerializareXML.Size = new System.Drawing.Size(224, 26);
             this.btnSerializareXML.Text = "Serializare XML";
             this.btnSerializareXML.Click += new System.EventHandler(this.btnSerializareXML_Click);
             // 
             // btnDeserializareXML
             // 
             this.btnDeserializareXML.Name = "btnDeserializareXML";
-            this.btnDeserializareXML.Size = new System.Drawing.Size(211, 26);
+            this.btnDeserializareXML.Size = new System.Drawing.Size(224, 26);
             this.btnDeserializareXML.Text = "Deserializare XML";
             this.btnDeserializareXML.Click += new System.EventHandler(this.btnDeserializareXML_Click);
             // 
             // fisierToolStripMenuItem
             // 
-            this.fisierToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnExportTxt});
             this.fisierToolStripMenuItem.Name = "fisierToolStripMenuItem";
             this.fisierToolStripMenuItem.Size = new System.Drawing.Size(57, 27);
             this.fisierToolStripMenuItem.Text = "Fisier";
-            // 
-            // btnExportTxt
-            // 
-            this.btnExportTxt.Name = "btnExportTxt";
-            this.btnExportTxt.Size = new System.Drawing.Size(135, 26);
-            this.btnExportTxt.Text = "Export";
-            this.btnExportTxt.Click += new System.EventHandler(this.btnExportTxt_Click);
+            this.fisierToolStripMenuItem.Click += new System.EventHandler(this.fisierToolStripMenuItem_Click);
             // 
             // btnGolire
             // 
@@ -407,6 +404,27 @@
             // 
             this.epNume.ContainerControl = this;
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(53, 27);
+            this.btnPrint.Text = "Print";
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // printPreviewDialog
+            // 
+            this.printPreviewDialog.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog.Enabled = true;
+            this.printPreviewDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog.Icon")));
+            this.printPreviewDialog.Name = "printPreviewDialog";
+            this.printPreviewDialog.Visible = false;
+            // 
+            // printDocument
+            // 
+            this.printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument_PrintPage);
+            // 
             // FormPacienti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -477,7 +495,6 @@
         private System.Windows.Forms.ToolStripMenuItem btnSerializareBinara;
         private System.Windows.Forms.ToolStripMenuItem btnDeserializareBinara;
         private System.Windows.Forms.ToolStripMenuItem fisierToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem btnExportTxt;
         private System.Windows.Forms.ToolStripMenuItem serializareXMLToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip cmPacient;
         private System.Windows.Forms.ToolStripMenuItem modificareToolStripMenuItem;
@@ -485,5 +502,9 @@
         private System.Windows.Forms.ToolStripMenuItem btnSerializareXML;
         private System.Windows.Forms.ToolStripMenuItem btnDeserializareXML;
         private System.Windows.Forms.ErrorProvider epNume;
+        private System.Windows.Forms.ToolStripMenuItem btnPrint;
+        private System.Windows.Forms.PageSetupDialog pageSetupDialog;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog;
+        private System.Drawing.Printing.PrintDocument printDocument;
     }
 }

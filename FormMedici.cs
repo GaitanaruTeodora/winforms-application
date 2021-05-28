@@ -8,8 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Net.Http.Headers;
+using System.Xml.Serialization;
 
 namespace WindowsFormsProiect
 {
@@ -17,7 +18,6 @@ namespace WindowsFormsProiect
      partial class FormMedici : Form
     {
         List<Medic> listaMedici;
-        Medic instance;
         public FormMedici()
         {
             InitializeComponent();
@@ -31,20 +31,30 @@ namespace WindowsFormsProiect
             tbParafa.Clear();
             comboGrad.SelectedItem = null;
             comboSpecialitate.SelectedItem = null;
+            pictureMedic.Image = null;
         }
         private void btnAdaugare_Click(object sender, EventArgs e)
         {
 
             Medic medic = new Medic();
-            medic.Nume = tbNume.Text;
-            medic.Prenume = tbPrenume.Text;
-            medic.Parafa = tbParafa.Text;
-            if (comboGrad.SelectedItem != null)
-                medic.Grad = comboGrad.SelectedItem.ToString();
-            if (comboSpecialitate.SelectedItem != null)
-                medic.Specialitate = comboSpecialitate.SelectedItem.ToString();
-            listaMedici.Add(medic);
-            golireFormular();
+            if (tbNume.Text == "")
+                epNume.SetError(tbNume, "Introduceti numele medicului!");
+            else
+            if (tbParafa.Text == "")
+                epParafa.SetError(tbParafa, "Introduceti parafa medicului!");
+            else
+            {
+                medic.Nume = tbNume.Text;
+                medic.Prenume = tbPrenume.Text;
+                medic.Parafa = tbParafa.Text;
+                if (comboGrad.SelectedItem != null)
+                    medic.Grad = comboGrad.SelectedItem.ToString();
+                if (comboSpecialitate.SelectedItem != null)
+                    medic.Specialitate = comboSpecialitate.SelectedItem.ToString();
+                listaMedici.Add(medic);
+                golireFormular();
+            }
+           
 
         }
 
@@ -61,18 +71,14 @@ namespace WindowsFormsProiect
                     itm.SubItems.Add(medic.Grad);
                     itm.SubItems.Add(medic.Specialitate);
 
-                    listViewMedic.Items.Add(itm);
+                    lvMedici.Items.Add(itm);
                 }
             }
-            else
-            {
-                MessageBox.Show("Nu sunt medici adaugati. Introduceti un medic!");
-            }
-        }
+      }
 
         private void golireLista()
         {
-            listViewMedic.Items.Clear();
+            lvMedici.Items.Clear();
         }
         private void btnAfisare_Click(object sender, EventArgs e)
         {
@@ -88,19 +94,18 @@ namespace WindowsFormsProiect
         {
             this.Close();
             
-            
         }
 
         private void iesireToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Environment.Exit(0);
         }
 
         private void serializareToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FileStream file = new FileStream("medici.dat", FileMode.Create, FileAccess.Write);
             BinaryFormatter bf = new BinaryFormatter();
-            bf.Serialize(file, listViewMedic.Text);
+            bf.Serialize(file, lvMedici.Text);
                                             
             file.Close();
 
@@ -110,47 +115,133 @@ namespace WindowsFormsProiect
         {
             FileStream file = new FileStream("medici.dat", FileMode.Open, FileAccess.Read);
             BinaryFormatter bf = new BinaryFormatter();
-            listViewMedic.Text = (string)bf.Deserialize(file);
+            lvMedici.Text = (string)bf.Deserialize(file);
             file.Close();
         }
 
-        private void listViewMedic_MouseClick(object sender, MouseEventArgs e)
+            
+
+        private void btnGolireFormular_Click(object sender, EventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
-                cmMedici.Show(Cursor.Position.X, Cursor.Position.Y);
+            golireFormular();
         }
 
-        private void modificareTSM_Click(object sender, EventArgs e)
+        private void tbNume_Validated(object sender, EventArgs e)
         {
-            if(listViewMedic.SelectedItems[0]!=null)
+            epNume.Clear();
+        }
+
+        private void tbNume_Validating(object sender, CancelEventArgs e)
+        {
+            if(tbNume.Text == "")
             {
-                ListViewItem item = listViewMedic.SelectedItems[0];
+                epNume.SetError(tbNume, "Informatie lipsa");
+                e.Cancel = true;
+            }
+        }
+
+        private void tbParafa_Validated(object sender, EventArgs e)
+        {
+            epParafa.Clear();
+        }
+
+        private void tbParafa_Validating(object sender, CancelEventArgs e)
+        {
+            if(tbParafa.Text == "")
+            {
+                epParafa.SetError(tbParafa, "Infromatie lipsa!");
+                e.Cancel = true;
+            }
+        }
+
+        private void stergereTSM_Click(object sender, EventArgs e)
+        {
+            if (lvMedici.SelectedItems[0] != null)
+            {
+                ListViewItem item = lvMedici.SelectedItems[0];
+                int index = item.Index;
+
+                listaMedici.RemoveAt(index);
+
+                populareLista();
+
+            }
+        }
+
+       
+        private Medic getMedicFromList(ListViewItem item)
+        {
+            Medic medic = new Medic();
+            medic.Nume = item.SubItems[0].Text;
+            medic.Prenume = item.SubItems[1].Text;
+            medic.Parafa = item.SubItems[2].Text;
+            medic.Grad = item.SubItems[3].Text;
+            medic.Specialitate = item.SubItems[4].Text;
+            return medic;
+        }
+        private void serializareToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(lvMedici.SelectedItems[0] !=null)
+            {
+                ListViewItem item = lvMedici.SelectedItems[0];
+                Medic m = getMedicFromList(item);
+
+                FileStream file = new FileStream("medici.dat", FileMode.Create, FileAccess.Write);
+                BinaryFormatter bf = new BinaryFormatter();
+                bf.Serialize(file, m);
+                golireLista();
+                file.Close();
+                MessageBox.Show("Serializarea s-a realizat cu succes!");
+            }
+        }
+
+        private void deserializareToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void modificareToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lvMedici.SelectedItems[0] != null)
+            {
+                ListViewItem item = lvMedici.SelectedItems[0];
                 int index = item.Index;
                 Medic medic = listaMedici[index];
                 FormModificareMedic form = new FormModificareMedic(medic);
                 form.ShowDialog();
             }
-           
-            
         }
 
+        private void lvMedici_MouseClick(object sender, MouseEventArgs e)
+        {
+           if(e.Button == MouseButtons.Right)
+            {
+                cmMedici.Show(Cursor.Position);
+            }
+        }
 
+        private void pictureMedic_DragDrop(object sender, DragEventArgs e)
+        {
+            var data = e.Data.GetData(DataFormats.FileDrop);
+            if(data!= null)
+            {
+                var fileName = data as string[];
+                pictureMedic.Image = Image.FromFile(fileName[0]);
+            }
 
-        //private void serializareToolStripMenuItem1_Click(object sender, EventArgs e)
-        //{
-        //    FileStream file = new FileStream("medici.dat", FileMode.Create, FileAccess.Write);
-        //    BinaryFormatter bf = new BinaryFormatter();
-        //    bf.Serialize(file, listViewMedic.Text);
-        //    /listViewMedic.Clear();
-        //    file.Close();
-        //}
+                    
+        }
 
-        //private void deserializareToolStripMenuItem1_Click(object sender, EventArgs e)
-        //{
-        //    FileStream file = new FileStream("medici.dat", FileMode.Open, FileAccess.Read);
-        //    BinaryFormatter bf = new BinaryFormatter();
-        //    listViewMedic.Text = (string)bf.Deserialize(file);
-        //    file.Close();
-        //}
+        private void FormMedici_Load(object sender, EventArgs e)
+        {
+            pictureMedic.AllowDrop = true;
+        }
+
+        private void pictureMedic_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        
     }
 }
