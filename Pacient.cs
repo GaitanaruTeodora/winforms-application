@@ -41,6 +41,11 @@ namespace WindowsFormsProiect
             set { sex = value; }
            
         }
+        public int Varsta
+        {
+            get { return varsta; }
+            set { varsta = value; }
+        }
         public DateTime DataNastere
         {
             get { return dataNastere; }

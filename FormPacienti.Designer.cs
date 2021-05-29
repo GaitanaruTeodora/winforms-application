@@ -36,6 +36,7 @@
             this.Cnp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Sex = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DataN = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Varsta = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Localitate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnAfisare = new System.Windows.Forms.Button();
             this.btnGolireLista = new System.Windows.Forms.Button();
@@ -47,6 +48,7 @@
             this.serializareXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSerializareXML = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDeserializareXML = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.fisierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnGolire = new System.Windows.Forms.Button();
             this.btnAdaugare = new System.Windows.Forms.Button();
@@ -68,10 +70,11 @@
             this.modificareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stergereToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.epNume = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.pageSetupDialog = new System.Windows.Forms.PageSetupDialog();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocument = new System.Drawing.Printing.PrintDocument();
+            this.lbVarsta = new System.Windows.Forms.Label();
+            this.tbVarsta = new System.Windows.Forms.TextBox();
             this.msPacienti.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epPacienti)).BeginInit();
             this.cmPacient.SuspendLayout();
@@ -86,16 +89,18 @@
             this.Cnp,
             this.Sex,
             this.DataN,
+            this.Varsta,
             this.Localitate});
             this.lvPacienti.FullRowSelect = true;
             this.lvPacienti.GridLines = true;
             this.lvPacienti.HideSelection = false;
-            this.lvPacienti.Location = new System.Drawing.Point(460, 58);
+            this.lvPacienti.Location = new System.Drawing.Point(359, 70);
             this.lvPacienti.Name = "lvPacienti";
-            this.lvPacienti.Size = new System.Drawing.Size(498, 312);
+            this.lvPacienti.Size = new System.Drawing.Size(599, 312);
             this.lvPacienti.TabIndex = 3;
             this.lvPacienti.UseCompatibleStateImageBehavior = false;
             this.lvPacienti.View = System.Windows.Forms.View.Details;
+            
             this.lvPacienti.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvPacienti_MouseClick);
             // 
             // Nume
@@ -122,6 +127,10 @@
             this.DataN.Text = "Data nastere";
             this.DataN.Width = 93;
             // 
+            // Varsta
+            // 
+            this.Varsta.Text = "Varsta";
+            // 
             // Localitate
             // 
             this.Localitate.Text = "Localitate";
@@ -130,9 +139,9 @@
             // btnAfisare
             // 
             this.btnAfisare.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(164)))), ((int)(((byte)(206)))));
-            this.btnAfisare.Location = new System.Drawing.Point(516, 403);
+            this.btnAfisare.Location = new System.Drawing.Point(688, 403);
             this.btnAfisare.Name = "btnAfisare";
-            this.btnAfisare.Size = new System.Drawing.Size(150, 49);
+            this.btnAfisare.Size = new System.Drawing.Size(127, 38);
             this.btnAfisare.TabIndex = 5;
             this.btnAfisare.Text = "Afisare lista";
             this.btnAfisare.UseVisualStyleBackColor = false;
@@ -141,9 +150,9 @@
             // btnGolireLista
             // 
             this.btnGolireLista.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(164)))), ((int)(((byte)(206)))));
-            this.btnGolireLista.Location = new System.Drawing.Point(762, 403);
+            this.btnGolireLista.Location = new System.Drawing.Point(831, 403);
             this.btnGolireLista.Name = "btnGolireLista";
-            this.btnGolireLista.Size = new System.Drawing.Size(152, 49);
+            this.btnGolireLista.Size = new System.Drawing.Size(127, 38);
             this.btnGolireLista.TabIndex = 6;
             this.btnGolireLista.Text = "Golire lista";
             this.btnGolireLista.UseVisualStyleBackColor = false;
@@ -211,16 +220,23 @@
             // btnSerializareXML
             // 
             this.btnSerializareXML.Name = "btnSerializareXML";
-            this.btnSerializareXML.Size = new System.Drawing.Size(224, 26);
+            this.btnSerializareXML.Size = new System.Drawing.Size(205, 26);
             this.btnSerializareXML.Text = "Serializare XML";
             this.btnSerializareXML.Click += new System.EventHandler(this.btnSerializareXML_Click);
             // 
             // btnDeserializareXML
             // 
             this.btnDeserializareXML.Name = "btnDeserializareXML";
-            this.btnDeserializareXML.Size = new System.Drawing.Size(224, 26);
+            this.btnDeserializareXML.Size = new System.Drawing.Size(205, 26);
             this.btnDeserializareXML.Text = "Deserializare XML";
             this.btnDeserializareXML.Click += new System.EventHandler(this.btnDeserializareXML_Click);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(53, 27);
+            this.btnPrint.Text = "Print";
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // fisierToolStripMenuItem
             // 
@@ -231,9 +247,9 @@
             // 
             // btnGolire
             // 
-            this.btnGolire.Location = new System.Drawing.Point(250, 403);
+            this.btnGolire.Location = new System.Drawing.Point(155, 403);
             this.btnGolire.Name = "btnGolire";
-            this.btnGolire.Size = new System.Drawing.Size(151, 49);
+            this.btnGolire.Size = new System.Drawing.Size(109, 33);
             this.btnGolire.TabIndex = 12;
             this.btnGolire.Text = "Golire formular";
             this.btnGolire.UseVisualStyleBackColor = true;
@@ -243,7 +259,7 @@
             // 
             this.btnAdaugare.Location = new System.Drawing.Point(40, 403);
             this.btnAdaugare.Name = "btnAdaugare";
-            this.btnAdaugare.Size = new System.Drawing.Size(150, 49);
+            this.btnAdaugare.Size = new System.Drawing.Size(109, 33);
             this.btnAdaugare.TabIndex = 11;
             this.btnAdaugare.Text = "Adaugare";
             this.btnAdaugare.UseVisualStyleBackColor = true;
@@ -251,9 +267,9 @@
             // 
             // tbLocalitate
             // 
-            this.tbLocalitate.Location = new System.Drawing.Point(37, 348);
+            this.tbLocalitate.Location = new System.Drawing.Point(45, 348);
             this.tbLocalitate.Name = "tbLocalitate";
-            this.tbLocalitate.Size = new System.Drawing.Size(364, 22);
+            this.tbLocalitate.Size = new System.Drawing.Size(217, 22);
             this.tbLocalitate.TabIndex = 26;
             this.tbLocalitate.Validating += new System.ComponentModel.CancelEventHandler(this.tbLocalitate_Validating);
             this.tbLocalitate.Validated += new System.EventHandler(this.tbLocalitate_Validated);
@@ -261,7 +277,7 @@
             // lbLocalitate
             // 
             this.lbLocalitate.AutoSize = true;
-            this.lbLocalitate.Location = new System.Drawing.Point(35, 319);
+            this.lbLocalitate.Location = new System.Drawing.Point(45, 319);
             this.lbLocalitate.Name = "lbLocalitate";
             this.lbLocalitate.Size = new System.Drawing.Size(69, 17);
             this.lbLocalitate.TabIndex = 25;
@@ -270,7 +286,7 @@
             // rbMasculin
             // 
             this.rbMasculin.AutoSize = true;
-            this.rbMasculin.Location = new System.Drawing.Point(94, 229);
+            this.rbMasculin.Location = new System.Drawing.Point(115, 190);
             this.rbMasculin.Name = "rbMasculin";
             this.rbMasculin.Size = new System.Drawing.Size(84, 21);
             this.rbMasculin.TabIndex = 24;
@@ -281,7 +297,7 @@
             // 
             this.rbFeminin.AutoSize = true;
             this.rbFeminin.Checked = true;
-            this.rbFeminin.Location = new System.Drawing.Point(94, 202);
+            this.rbFeminin.Location = new System.Drawing.Point(115, 163);
             this.rbFeminin.Name = "rbFeminin";
             this.rbFeminin.Size = new System.Drawing.Size(78, 21);
             this.rbFeminin.TabIndex = 16;
@@ -293,7 +309,7 @@
             // 
             this.lbSex.AutoEllipsis = true;
             this.lbSex.AutoSize = true;
-            this.lbSex.Location = new System.Drawing.Point(37, 204);
+            this.lbSex.Location = new System.Drawing.Point(42, 165);
             this.lbSex.Name = "lbSex";
             this.lbSex.Size = new System.Drawing.Size(31, 17);
             this.lbSex.TabIndex = 23;
@@ -301,7 +317,7 @@
             // 
             // tbCnp
             // 
-            this.tbCnp.Location = new System.Drawing.Point(106, 157);
+            this.tbCnp.Location = new System.Drawing.Point(115, 125);
             this.tbCnp.Name = "tbCnp";
             this.tbCnp.Size = new System.Drawing.Size(147, 22);
             this.tbCnp.TabIndex = 22;
@@ -311,7 +327,7 @@
             // 
             // tbPrenume
             // 
-            this.tbPrenume.Location = new System.Drawing.Point(106, 126);
+            this.tbPrenume.Location = new System.Drawing.Point(115, 94);
             this.tbPrenume.Name = "tbPrenume";
             this.tbPrenume.Size = new System.Drawing.Size(147, 22);
             this.tbPrenume.TabIndex = 21;
@@ -320,7 +336,7 @@
             // 
             // tbNume
             // 
-            this.tbNume.Location = new System.Drawing.Point(106, 90);
+            this.tbNume.Location = new System.Drawing.Point(115, 58);
             this.tbNume.Name = "tbNume";
             this.tbNume.Size = new System.Drawing.Size(147, 22);
             this.tbNume.TabIndex = 20;
@@ -330,7 +346,7 @@
             // lbPrenume
             // 
             this.lbPrenume.AutoSize = true;
-            this.lbPrenume.Location = new System.Drawing.Point(35, 129);
+            this.lbPrenume.Location = new System.Drawing.Point(40, 97);
             this.lbPrenume.Name = "lbPrenume";
             this.lbPrenume.Size = new System.Drawing.Size(65, 17);
             this.lbPrenume.TabIndex = 19;
@@ -339,7 +355,7 @@
             // lbDataN
             // 
             this.lbDataN.AutoSize = true;
-            this.lbDataN.Location = new System.Drawing.Point(34, 259);
+            this.lbDataN.Location = new System.Drawing.Point(40, 218);
             this.lbDataN.Name = "lbDataN";
             this.lbDataN.Size = new System.Drawing.Size(90, 17);
             this.lbDataN.TabIndex = 18;
@@ -348,7 +364,7 @@
             // lbCnp
             // 
             this.lbCnp.AutoSize = true;
-            this.lbCnp.Location = new System.Drawing.Point(34, 162);
+            this.lbCnp.Location = new System.Drawing.Point(40, 130);
             this.lbCnp.Name = "lbCnp";
             this.lbCnp.Size = new System.Drawing.Size(33, 17);
             this.lbCnp.TabIndex = 17;
@@ -357,7 +373,7 @@
             // lbNume
             // 
             this.lbNume.AutoSize = true;
-            this.lbNume.Location = new System.Drawing.Point(34, 90);
+            this.lbNume.Location = new System.Drawing.Point(40, 58);
             this.lbNume.Name = "lbNume";
             this.lbNume.Size = new System.Drawing.Size(45, 17);
             this.lbNume.TabIndex = 15;
@@ -365,11 +381,11 @@
             // 
             // dateTimePickerDataN
             // 
-            this.dateTimePickerDataN.Location = new System.Drawing.Point(37, 283);
+            this.dateTimePickerDataN.Location = new System.Drawing.Point(43, 242);
             this.dateTimePickerDataN.MaxDate = new System.DateTime(2021, 6, 1, 0, 0, 0, 0);
             this.dateTimePickerDataN.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dateTimePickerDataN.Name = "dateTimePickerDataN";
-            this.dateTimePickerDataN.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePickerDataN.Size = new System.Drawing.Size(219, 22);
             this.dateTimePickerDataN.TabIndex = 14;
             this.dateTimePickerDataN.Value = new System.DateTime(2021, 4, 29, 15, 53, 53, 0);
             // 
@@ -404,13 +420,6 @@
             // 
             this.epNume.ContainerControl = this;
             // 
-            // btnPrint
-            // 
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(53, 27);
-            this.btnPrint.Text = "Print";
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
             // printPreviewDialog
             // 
             this.printPreviewDialog.AutoScrollMargin = new System.Drawing.Size(0, 0);
@@ -425,12 +434,30 @@
             // 
             this.printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument_PrintPage);
             // 
+            // lbVarsta
+            // 
+            this.lbVarsta.AutoSize = true;
+            this.lbVarsta.Location = new System.Drawing.Point(42, 286);
+            this.lbVarsta.Name = "lbVarsta";
+            this.lbVarsta.Size = new System.Drawing.Size(49, 17);
+            this.lbVarsta.TabIndex = 27;
+            this.lbVarsta.Text = "Varsta";
+            // 
+            // tbVarsta
+            // 
+            this.tbVarsta.Location = new System.Drawing.Point(115, 286);
+            this.tbVarsta.Name = "tbVarsta";
+            this.tbVarsta.Size = new System.Drawing.Size(147, 22);
+            this.tbVarsta.TabIndex = 28;
+            // 
             // FormPacienti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(970, 483);
+            this.Controls.Add(this.tbVarsta);
+            this.Controls.Add(this.lbVarsta);
             this.Controls.Add(this.tbLocalitate);
             this.Controls.Add(this.lbLocalitate);
             this.Controls.Add(this.rbMasculin);
@@ -506,5 +533,8 @@
         private System.Windows.Forms.PageSetupDialog pageSetupDialog;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog;
         private System.Drawing.Printing.PrintDocument printDocument;
+        private System.Windows.Forms.TextBox tbVarsta;
+        private System.Windows.Forms.Label lbVarsta;
+        private System.Windows.Forms.ColumnHeader Varsta;
     }
 }

@@ -12,6 +12,7 @@ namespace WindowsFormsProiect
 {
     public partial class FormInitial : Form
     {
+        public static FormPacienti formPacienti;
         public FormInitial()
         {
             InitializeComponent();
@@ -28,9 +29,9 @@ namespace WindowsFormsProiect
 
         private void btnPacienti_Click(object sender, EventArgs e)
         {
-            FormPacienti form = new FormPacienti();
+            formPacienti = new FormPacienti();
             this.Hide();
-            form.ShowDialog();
+            formPacienti.ShowDialog();
             this.Show();
         }
 
@@ -44,7 +45,9 @@ namespace WindowsFormsProiect
 
         private void btnStatistici_Click(object sender, EventArgs e)
         {
-            FormStatistici form = new FormStatistici();
+            //List<Pacient> listaPacienti = FormPacienti.ListaPacienti;
+            //FormStatistici form = new FormStatistici(listaPacienti);
+            FormRetete form = new FormRetete();
             this.Hide();
             form.ShowDialog();
             this.Close();
@@ -53,6 +56,26 @@ namespace WindowsFormsProiect
         private void btnIesire_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnStatistici_Click_1(object sender, EventArgs e)
+        {
+            List<Pacient> listaPacienti = FormPacienti.ListaPacienti;
+           
+            if (listaPacienti == null)
+            {
+                MessageBox.Show("Nu exista pacienti de afisat");
+            }
+            else
+            {
+
+                FormStatistici form = new FormStatistici(listaPacienti);
+
+                this.Hide();
+                form.ShowDialog();
+                this.Close();
+            }
+           
         }
     }
 }

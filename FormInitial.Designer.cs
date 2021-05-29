@@ -133,7 +133,7 @@
             this.btnStatistici.Text = "Statistici";
             this.btnStatistici.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnStatistici.UseVisualStyleBackColor = true;
-            this.btnStatistici.Click += new System.EventHandler(this.btnStatistici_Click);
+            this.btnStatistici.Click += new System.EventHandler(this.btnStatistici_Click_1);
             // 
             // pictureBox1
             // 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lbNume = new System.Windows.Forms.Label();
             this.tbNume = new System.Windows.Forms.TextBox();
             this.tbPrenume = new System.Windows.Forms.TextBox();
@@ -51,7 +52,11 @@
             this.exportFisierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportFisierToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.citireFisierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.epNume = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epParafa = new System.Windows.Forms.ErrorProvider(this.components);
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epNume)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epParafa)).BeginInit();
             this.SuspendLayout();
             // 
             // lbNume
@@ -69,6 +74,8 @@
             this.tbNume.Name = "tbNume";
             this.tbNume.Size = new System.Drawing.Size(219, 22);
             this.tbNume.TabIndex = 1;
+            this.tbNume.Validating += new System.ComponentModel.CancelEventHandler(this.tbNume_Validating);
+            this.tbNume.Validated += new System.EventHandler(this.tbNume_Validated);
             // 
             // tbPrenume
             // 
@@ -92,6 +99,8 @@
             this.tbParafa.Name = "tbParafa";
             this.tbParafa.Size = new System.Drawing.Size(219, 22);
             this.tbParafa.TabIndex = 5;
+            this.tbParafa.Validating += new System.ComponentModel.CancelEventHandler(this.tbParafa_Validating);
+            this.tbParafa.Validated += new System.EventHandler(this.tbParafa_Validated);
             // 
             // lbParafa
             // 
@@ -192,7 +201,7 @@
             this.exportFisierToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(396, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(396, 28);
             this.menuStrip1.TabIndex = 14;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -202,20 +211,20 @@
             this.serializareToolStripMenuItem,
             this.deserializareToolStripMenuItem});
             this.serializareBinaraToolStripMenuItem.Name = "serializareBinaraToolStripMenuItem";
-            this.serializareBinaraToolStripMenuItem.Size = new System.Drawing.Size(138, 26);
+            this.serializareBinaraToolStripMenuItem.Size = new System.Drawing.Size(138, 24);
             this.serializareBinaraToolStripMenuItem.Text = "Serializare binara";
             // 
             // serializareToolStripMenuItem
             // 
             this.serializareToolStripMenuItem.Name = "serializareToolStripMenuItem";
-            this.serializareToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.serializareToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.serializareToolStripMenuItem.Text = "Serializare";
             this.serializareToolStripMenuItem.Click += new System.EventHandler(this.serializareToolStripMenuItem_Click);
             // 
             // deserializareToolStripMenuItem
             // 
             this.deserializareToolStripMenuItem.Name = "deserializareToolStripMenuItem";
-            this.deserializareToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.deserializareToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.deserializareToolStripMenuItem.Text = "Deserializare";
             this.deserializareToolStripMenuItem.Click += new System.EventHandler(this.deserializareToolStripMenuItem_Click);
             // 
@@ -225,7 +234,7 @@
             this.serializareXMLToolStripMenuItem1,
             this.deserializareXMLToolStripMenuItem});
             this.serializareXMLToolStripMenuItem.Name = "serializareXMLToolStripMenuItem";
-            this.serializareXMLToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
+            this.serializareXMLToolStripMenuItem.Size = new System.Drawing.Size(125, 24);
             this.serializareXMLToolStripMenuItem.Text = "Serializare XML";
             // 
             // serializareXMLToolStripMenuItem1
@@ -248,22 +257,30 @@
             this.exportFisierToolStripMenuItem1,
             this.citireFisierToolStripMenuItem});
             this.exportFisierToolStripMenuItem.Name = "exportFisierToolStripMenuItem";
-            this.exportFisierToolStripMenuItem.Size = new System.Drawing.Size(57, 26);
+            this.exportFisierToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
             this.exportFisierToolStripMenuItem.Text = "Fisier";
             // 
             // exportFisierToolStripMenuItem1
             // 
             this.exportFisierToolStripMenuItem1.Name = "exportFisierToolStripMenuItem1";
-            this.exportFisierToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.exportFisierToolStripMenuItem1.Size = new System.Drawing.Size(171, 26);
             this.exportFisierToolStripMenuItem1.Text = "Export fisier";
             this.exportFisierToolStripMenuItem1.Click += new System.EventHandler(this.exportFisierToolStripMenuItem1_Click);
             // 
             // citireFisierToolStripMenuItem
             // 
             this.citireFisierToolStripMenuItem.Name = "citireFisierToolStripMenuItem";
-            this.citireFisierToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.citireFisierToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
             this.citireFisierToolStripMenuItem.Text = "Citire fisier";
             this.citireFisierToolStripMenuItem.Click += new System.EventHandler(this.citireFisierToolStripMenuItem_Click);
+            // 
+            // epNume
+            // 
+            this.epNume.ContainerControl = this;
+            // 
+            // epParafa
+            // 
+            this.epParafa.ContainerControl = this;
             // 
             // FormModificareMedic
             // 
@@ -292,6 +309,8 @@
             this.Load += new System.EventHandler(this.FormModificareMedic_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epNume)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epParafa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -322,5 +341,7 @@
         private System.Windows.Forms.ToolStripMenuItem exportFisierToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportFisierToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem citireFisierToolStripMenuItem;
+        private System.Windows.Forms.ErrorProvider epNume;
+        private System.Windows.Forms.ErrorProvider epParafa;
     }
 }

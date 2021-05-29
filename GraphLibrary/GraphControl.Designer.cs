@@ -28,10 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(3, 13);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(520, 378);
+            this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // GraphControl
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panel1);
+            this.Name = "GraphControl";
+            this.Size = new System.Drawing.Size(535, 404);
+            this.Load += new System.EventHandler(this.GraphControl_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel panel1;
     }
 }

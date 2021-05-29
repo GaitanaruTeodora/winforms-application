@@ -49,6 +49,8 @@
             this.btnRenunta = new System.Windows.Forms.Button();
             this.epNume = new System.Windows.Forms.ErrorProvider(this.components);
             this.epCnp = new System.Windows.Forms.ErrorProvider(this.components);
+            this.tbVarsta = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epNume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epCnp)).BeginInit();
@@ -56,6 +58,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.tbVarsta);
             this.panel2.Controls.Add(this.tbLocalitate);
             this.panel2.Controls.Add(this.lbLocalitate);
             this.panel2.Controls.Add(this.rbMasculin);
@@ -77,7 +81,7 @@
             // 
             // tbLocalitate
             // 
-            this.tbLocalitate.Location = new System.Drawing.Point(40, 254);
+            this.tbLocalitate.Location = new System.Drawing.Point(40, 266);
             this.tbLocalitate.Name = "tbLocalitate";
             this.tbLocalitate.Size = new System.Drawing.Size(368, 22);
             this.tbLocalitate.TabIndex = 11;
@@ -94,7 +98,7 @@
             // rbMasculin
             // 
             this.rbMasculin.AutoSize = true;
-            this.rbMasculin.Location = new System.Drawing.Point(103, 149);
+            this.rbMasculin.Location = new System.Drawing.Point(336, 34);
             this.rbMasculin.Name = "rbMasculin";
             this.rbMasculin.Size = new System.Drawing.Size(84, 21);
             this.rbMasculin.TabIndex = 9;
@@ -105,7 +109,7 @@
             // rbFeminin
             // 
             this.rbFeminin.AutoSize = true;
-            this.rbFeminin.Location = new System.Drawing.Point(103, 122);
+            this.rbFeminin.Location = new System.Drawing.Point(336, 7);
             this.rbFeminin.Name = "rbFeminin";
             this.rbFeminin.Size = new System.Drawing.Size(78, 21);
             this.rbFeminin.TabIndex = 2;
@@ -117,7 +121,7 @@
             // 
             this.label5.AutoEllipsis = true;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(37, 124);
+            this.label5.Location = new System.Drawing.Point(299, 9);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(31, 17);
             this.label5.TabIndex = 8;
@@ -160,7 +164,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 176);
+            this.label3.Location = new System.Drawing.Point(37, 122);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 17);
             this.label3.TabIndex = 3;
@@ -186,7 +190,7 @@
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(40, 200);
+            this.dateTimePicker.Location = new System.Drawing.Point(40, 151);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(200, 22);
             this.dateTimePicker.TabIndex = 0;
@@ -198,6 +202,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(513, 61);
             this.panel3.TabIndex = 1;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // btnModificare
             // 
@@ -236,6 +241,22 @@
             // epCnp
             // 
             this.epCnp.ContainerControl = this;
+            // 
+            // tbVarsta
+            // 
+            this.tbVarsta.Location = new System.Drawing.Point(103, 194);
+            this.tbVarsta.Name = "tbVarsta";
+            this.tbVarsta.Size = new System.Drawing.Size(147, 22);
+            this.tbVarsta.TabIndex = 12;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(37, 197);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 17);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Varsta";
             // 
             // FormModificarePacient
             // 
@@ -280,5 +301,7 @@
         private System.Windows.Forms.Button btnRenunta;
         private System.Windows.Forms.ErrorProvider epNume;
         private System.Windows.Forms.ErrorProvider epCnp;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tbVarsta;
     }
 }

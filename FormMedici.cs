@@ -61,9 +61,8 @@ namespace WindowsFormsProiect
         private void populareLista()
         {
             golireLista();
-            if (listaMedici.Count != 0)
-            {
-                foreach (Medic medic in listaMedici)
+            
+            foreach (Medic medic in listaMedici)
                 {
                     ListViewItem itm = new ListViewItem(medic.Nume);
                     itm.SubItems.Add(medic.Prenume);
@@ -73,8 +72,9 @@ namespace WindowsFormsProiect
 
                     lvMedici.Items.Add(itm);
                 }
-            }
-      }
+            
+           
+        }
 
         private void golireLista()
         {
@@ -209,6 +209,7 @@ namespace WindowsFormsProiect
                 Medic medic = listaMedici[index];
                 FormModificareMedic form = new FormModificareMedic(medic);
                 form.ShowDialog();
+                populareLista();
             }
         }
 

@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CabinetMedicalDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CabinetMedicalDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DetaliuReteta.cs" />
     <Compile Include="ExceptieValidare.cs" />
     <Compile Include="FormDragAndDrop.cs">
       <SubType>Form</SubType>
@@ -139,6 +145,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="CabinetMedicalDataSet.xsc">
+      <DependentUpon>CabinetMedicalDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CabinetMedicalDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CabinetMedicalDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CabinetMedicalDataSet.xss">
+      <DependentUpon>CabinetMedicalDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -151,6 +168,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="GraphLibrary\GraphLibrary.csproj">
+      <Project>{7d6bdab1-0423-4333-8366-40c877da2fe3}</Project>
+      <Name>GraphLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

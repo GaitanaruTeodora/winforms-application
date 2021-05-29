@@ -25,11 +25,11 @@ namespace WindowsFormsProiect
 
         private void completareFormular(Medic medic)
         {
-            tbNume.Text = instance.Nume;
-            tbPrenume.Text = instance.Prenume;
-            tbParafa.Text = instance.Parafa;
-            comboGrad.SelectedItem = instance.Grad;
-            comboSpecialitate.SelectedItem = instance.Specialitate;
+            tbNume.Text = medic.Nume;
+            tbPrenume.Text = medic.Prenume;
+            tbParafa.Text = medic.Parafa;
+            comboGrad.SelectedItem = medic.Grad;
+            comboSpecialitate.SelectedItem = medic.Specialitate;
             
         }
         private void FormModificareMedic_Load(object sender, EventArgs e)
@@ -38,15 +38,15 @@ namespace WindowsFormsProiect
         }
         private void btnSalvare_Click(object sender, EventArgs e)
         {
-            Medic medic = new Medic();
-            medic.Nume = tbNume.Text;
-            medic.Prenume = tbPrenume.Text;
-            medic.Parafa = tbParafa.Text;
+           
+            instance.Nume = tbNume.Text;
+            instance.Prenume = tbPrenume.Text;
+            instance.Parafa = tbParafa.Text;
             if(comboGrad.SelectedItem!=null)
-            medic.Grad = comboGrad.SelectedItem.ToString();
+            instance.Grad = comboGrad.SelectedItem.ToString();
             if(comboSpecialitate.SelectedItem!=null)
-            medic.Specialitate = comboSpecialitate.SelectedItem.ToString();
-
+            instance.Specialitate = comboSpecialitate.SelectedItem.ToString();
+            
             this.Close();  
         }
 
@@ -138,6 +138,35 @@ namespace WindowsFormsProiect
             }
             file.Close();
             sw.Close();
+        }
+
+        private void tbNume_Validating(object sender, CancelEventArgs e)
+        {
+            if (tbNume.Text == "")
+            {
+                epNume.SetError(tbNume, "Infromatie lipsa!");
+                e.Cancel = true;
+            }
+
+        }
+
+        private void tbNume_Validated(object sender, EventArgs e)
+        {
+            epNume.Clear();
+        }
+
+        private void tbParafa_Validated(object sender, EventArgs e)
+        {
+            epParafa.Clear();
+        }
+
+        private void tbParafa_Validating(object sender, CancelEventArgs e)
+        {
+            if (tbParafa.Text == "")
+            {
+                epParafa.SetError(tbParafa, "Infromatie lipsa!");
+                e.Cancel = true;
+            }
         }
     }
 }

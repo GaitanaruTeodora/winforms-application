@@ -28,19 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStatistici));
+            this.graphControl1 = new GraphLibrary.GraphControl();
             this.SuspendLayout();
+            // 
+            // graphControl1
+            // 
+            this.graphControl1.Location = new System.Drawing.Point(29, 23);
+            this.graphControl1.Name = "graphControl1";
+            this.graphControl1.Size = new System.Drawing.Size(694, 404);
+            this.graphControl1.TabIndex = 0;
+            this.graphControl1.Values = ((System.Collections.Generic.List<GraphLibrary.BarValue>)(resources.GetObject("graphControl1.Values")));
             // 
             // FormStatistici
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(756, 448);
+            this.Controls.Add(this.graphControl1);
             this.Name = "FormStatistici";
             this.Text = "FormStatistici";
+            this.Load += new System.EventHandler(this.FormStatistici_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private GraphLibrary.GraphControl graphControl1;
     }
 }

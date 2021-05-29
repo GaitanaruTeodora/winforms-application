@@ -117,4 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="graphControl1.Values" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAJIBR3JhcGhMaWJyYXJ5LCBWZXJzaW9uPTEuMC4wLjAsIEN1bHR1
+        cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49bnVsbF1dLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkMAwAAAENHcmFw
+        aExpYnJhcnksIFZlcnNpb249MS4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1u
+        dWxsBQEAAAA4U3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tHcmFwaExpYnJhcnkuQmFy
+        VmFsdWUDAAAABl9pdGVtcwVfc2l6ZQhfdmVyc2lvbgQAABdHcmFwaExpYnJhcnkuQmFyVmFsdWVbXQMA
+        AAAICAIAAAAJBAAAAAAAAAAAAAAABwQAAAAAAQAAAAAAAAAEFUdyYXBoTGlicmFyeS5CYXJWYWx1ZQMA
+        AAAL
+</value>
+  </data>
 </root>

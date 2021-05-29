@@ -29,6 +29,7 @@ namespace WindowsFormsProiect
                 else
                     rbMasculin.Checked = true;
                 dateTimePicker.Value = pacient.DataNastere;
+                tbVarsta.Text = pacient.Varsta.ToString();
                 tbLocalitate.Text = pacient.Localitate;
 
             
@@ -70,6 +71,10 @@ namespace WindowsFormsProiect
             else
                 instance.Sex = "Masculin";
             instance.DataNastere = dateTimePicker.Value;
+            if (tbVarsta.Text != null)
+            {
+                instance.Varsta = Int32.Parse(tbVarsta.Text);
+            }
             instance.Localitate = tbLocalitate.Text;
 
             this.Close();          
@@ -102,6 +107,11 @@ namespace WindowsFormsProiect
         private void tbCnp_Validated(object sender, EventArgs e)
         {
             epCnp.Clear();
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

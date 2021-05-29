@@ -18,13 +18,16 @@ namespace WindowsFormsProiect
 {   
     public partial class FormPacienti : Form
     {
-        private List<Pacient> listaPacienti;
+        private static List<Pacient> listaPacienti;
         public FormPacienti()
         {
             InitializeComponent();
             listaPacienti = new List<Pacient>();
         }
-
+        public static List<Pacient> ListaPacienti
+        {
+            get { return listaPacienti; }
+        }
         private void btnAdaugare_Click(object sender, EventArgs e)
         {
             Pacient pacient = new Pacient();
@@ -41,35 +44,66 @@ namespace WindowsFormsProiect
                 epPacienti.SetError(tbLocalitate, "Introduceti localitatea");
             else
             {
+                pacient.Nume = tbNume.Text;
+                pacient.Prenume = tbPrenume.Text;
+
+                pacient.Cnp = tbCnp.Text;
+                   if (rbFeminin.Checked)
+                    pacient.Sex = rbFeminin.Text;
+                   else
+                 pacient.Sex = rbMasculin.Text;
+                 pacient.DataNastere = dateTimePickerDataN.Value;
+                 pacient.Localitate = tbLocalitate.Text;
                 try
                 {
-                    pacient.Nume = tbNume.Text;
-                    pacient.Prenume = tbPrenume.Text;
-
-                    pacient.Cnp = tbCnp.Text;
-                    if (rbFeminin.Checked)
-                        pacient.Sex = rbFeminin.Text;
+                    if (tbVarsta.Text == "")
+                        throw new ExceptieValidare();
+                    else if (tbVarsta.Text.All(char.IsDigit))
+                    {
+                        pacient.Varsta = Int32.Parse(tbVarsta.Text);
+                        listaPacienti.Add(pacient);
+                        golireFormular();
+                    }
                     else
-                        pacient.Sex = rbMasculin.Text;
-                    pacient.DataNastere = dateTimePickerDataN.Value;
-                    pacient.Localitate = tbLocalitate.Text;
-
-                    MessageBox.Show(pacient.ToString());
-                    listaPacienti.Add(pacient);
-                    golireFormular();
-
-                    //throw new ExceptieValidare();
-
+                        MessageBox.Show("Format incorect!");
                 }catch(ExceptieValidare ex)
                 {
                     MessageBox.Show(ex.Message);
-                }catch(Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
                 }
-                
+                                   
+                  
+                //try
+                //{
+                //    pacient.Nume = tbNume.Text;
+                //    pacient.Prenume = tbPrenume.Text;
+
+                //    pacient.Cnp = tbCnp.Text;
+                //    if (rbFeminin.Checked)
+                //        pacient.Sex = rbFeminin.Text;
+                //    else
+                //        pacient.Sex = rbMasculin.Text;
+                //    pacient.DataNastere = dateTimePickerDataN.Value;
+                //    pacient.Localitate = tbLocalitate.Text;
+                //    if (tbVarsta.Text == "")
+                //        throw new ExceptieValidare();
+                //    else if (tbVarsta.Text.All(char.IsDigit))
+                //        pacient.Varsta = Int32.Parse(tbVarsta.Text);
+                //    else
+                //        MessageBox.Show("Format incorect!");
+                //    MessageBox.Show(pacient.ToString());
+                //    listaPacienti.Add(pacient);
+                //    golireFormular();
+
+                //}catch(ExceptieValidare ex)
+                //{
+                //    MessageBox.Show(ex.Message);
+                //}catch(Exception ex)
+                //{
+                //    MessageBox.Show(ex.Message);
+                //}
+
             }
-            
+
         }
 
         private void golireFormular()
@@ -80,6 +114,7 @@ namespace WindowsFormsProiect
             rbFeminin.Checked = false;
             rbMasculin.Checked = false;
             dateTimePickerDataN.Value = DateTime.Now;
+            tbVarsta.Clear();
             tbLocalitate.Clear();
 
         }
@@ -107,6 +142,7 @@ namespace WindowsFormsProiect
                 itm.SubItems.Add(pacient.Cnp.ToString());
                 itm.SubItems.Add(pacient.Sex);
                 itm.SubItems.Add(pacient.DataNastere.ToShortDateString());
+                itm.SubItems.Add(pacient.Varsta.ToString());
                 itm.SubItems.Add(pacient.Localitate);
 
                 lvPacienti.Items.Add(itm);
@@ -120,6 +156,7 @@ namespace WindowsFormsProiect
             itm.SubItems.Add(pacient.Cnp.ToString());
             itm.SubItems.Add(pacient.Sex);
             itm.SubItems.Add(pacient.DataNastere.ToShortDateString());
+            itm.SubItems.Add(pacient.Varsta.ToString());
             itm.SubItems.Add(pacient.Localitate);
 
             lvPacienti.Items.Add(itm);
@@ -145,7 +182,8 @@ namespace WindowsFormsProiect
             p.Cnp = itm.SubItems[2].Text;
             p.Sex = itm.SubItems[3].Text;
             p.DataNastere =DateTime.Parse(itm.SubItems[4].Text);
-            p.Localitate = itm.SubItems[5].Text;
+            p.Varsta = Int32.Parse(itm.SubItems[5].Text);
+            p.Localitate = itm.SubItems[6].Text;
            
             return p;
 
@@ -368,8 +406,8 @@ namespace WindowsFormsProiect
             StreamWriter sw = new StreamWriter(file);
             foreach (Pacient p in listaPacienti)
             {
-                sw.WriteLine("\" {0}\", \"{1}\", \"{2}\", \" {3}\", \"{4}\", \"{5}\"",
-                    p.Nume, p.Prenume, p.Cnp, p.Sex, p.DataNastere.ToShortDateString(), p.Localitate);
+                sw.WriteLine("\" {0}\", \"{1}\", \"{2}\", \" {3}\", \"{4}\", \"{5}\" ,\"{6}\"",
+                    p.Nume, p.Prenume, p.Cnp, p.Sex, p.DataNastere.ToShortDateString(),p.Varsta, p.Localitate);
             }
             sw.Close();
             file.Close();
@@ -442,6 +480,7 @@ namespace WindowsFormsProiect
 
         }
 
+       
     }
 
 }
