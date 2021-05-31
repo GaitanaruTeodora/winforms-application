@@ -10,7 +10,7 @@ namespace WindowsFormsProiect
     {
         public override string Message
         {
-            get { return "Exceptie validare date"; }
+            get { return "Exceptie validare date. Introduceti varsta pacientului!"; }
         }
     }
 }

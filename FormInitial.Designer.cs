@@ -50,6 +50,7 @@
             this.panel1.Controls.Add(this.btnStatistici);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(173, 624);
             this.panel1.TabIndex = 0;
@@ -63,6 +64,7 @@
             this.btnIesire.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnIesire.Image = ((System.Drawing.Image)(resources.GetObject("btnIesire.Image")));
             this.btnIesire.Location = new System.Drawing.Point(0, 506);
+            this.btnIesire.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnIesire.Name = "btnIesire";
             this.btnIesire.Size = new System.Drawing.Size(173, 118);
             this.btnIesire.TabIndex = 7;
@@ -78,7 +80,8 @@
             this.btnMedici.Font = new System.Drawing.Font("Lucida Calligraphy", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMedici.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.btnMedici.Image = ((System.Drawing.Image)(resources.GetObject("btnMedici.Image")));
-            this.btnMedici.Location = new System.Drawing.Point(0, -35);
+            this.btnMedici.Location = new System.Drawing.Point(0, -34);
+            this.btnMedici.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMedici.Name = "btnMedici";
             this.btnMedici.Size = new System.Drawing.Size(173, 156);
             this.btnMedici.TabIndex = 6;
@@ -95,6 +98,7 @@
             this.btnPacienti.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.btnPacienti.Image = ((System.Drawing.Image)(resources.GetObject("btnPacienti.Image")));
             this.btnPacienti.Location = new System.Drawing.Point(3, 118);
+            this.btnPacienti.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPacienti.Name = "btnPacienti";
             this.btnPacienti.Size = new System.Drawing.Size(173, 128);
             this.btnPacienti.TabIndex = 5;
@@ -111,6 +115,7 @@
             this.btnRetete.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.btnRetete.Image = ((System.Drawing.Image)(resources.GetObject("btnRetete.Image")));
             this.btnRetete.Location = new System.Drawing.Point(0, 238);
+            this.btnRetete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRetete.Name = "btnRetete";
             this.btnRetete.Size = new System.Drawing.Size(176, 140);
             this.btnRetete.TabIndex = 4;
@@ -127,8 +132,9 @@
             this.btnStatistici.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnStatistici.Image = ((System.Drawing.Image)(resources.GetObject("btnStatistici.Image")));
             this.btnStatistici.Location = new System.Drawing.Point(3, 373);
+            this.btnStatistici.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStatistici.Name = "btnStatistici";
-            this.btnStatistici.Size = new System.Drawing.Size(173, 136);
+            this.btnStatistici.Size = new System.Drawing.Size(173, 135);
             this.btnStatistici.TabIndex = 3;
             this.btnStatistici.Text = "Statistici";
             this.btnStatistici.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -141,8 +147,9 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(173, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(773, 624);
+            this.pictureBox1.Size = new System.Drawing.Size(774, 624);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -153,7 +160,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Mongolian Baiti", 28.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label1.Location = new System.Drawing.Point(318, 263);
+            this.label1.Location = new System.Drawing.Point(317, 263);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(384, 100);
             this.label1.TabIndex = 2;
@@ -165,14 +172,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(13)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(946, 624);
+            this.ClientSize = new System.Drawing.Size(947, 624);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormInitial";
-            this.Text = "Form1";
+            this.Text = "Aplicatie Cabinet Medical";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

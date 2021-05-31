@@ -109,9 +109,19 @@ namespace WindowsFormsProiect
             epCnp.Clear();
         }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
 
+        private void tbVarsta_Validated(object sender, EventArgs e)
+        {
+            epVarsta.Clear();
+        }
+
+        private void tbVarsta_Validating(object sender, CancelEventArgs e)
+        {
+            if( tbVarsta.Text == "" || !tbVarsta.Text.All(char.IsDigit))
+            {
+                epVarsta.SetError((Control)sender, "Informatie invalida");
+                e.Cancel = true;
+            }
         }
     }
 }

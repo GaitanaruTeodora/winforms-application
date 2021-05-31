@@ -18,7 +18,9 @@ namespace WindowsFormsProiect
         String connectionString;
         OleDbConnection connection;
         Reteta updateObj;
+        DetaliuReteta updateObj2;
         static int cod;
+        static string scod;
 
 
         public FormRetete()
@@ -30,7 +32,7 @@ namespace WindowsFormsProiect
             InitializeComponent();
         }
 
-        private void incarcareDetaliu()
+        private void incarcareDetaliu(int id)
         {
             dgvDet.Rows.Clear();
 
@@ -39,7 +41,7 @@ namespace WindowsFormsProiect
                 connection.Open();
                 OleDbCommand command = new OleDbCommand();
                 command.Connection = connection;
-                command.CommandText = "SELECT * FROM detaliuReteta";
+                command.CommandText = "SELECT * FROM detaliuReteta where IdReteta = " + id.ToString();
                 OleDbDataReader dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
@@ -48,10 +50,12 @@ namespace WindowsFormsProiect
                     DataGridViewRow row = new DataGridViewRow();
                     row.CreateCells(dgvDet);
                     //row.Cells[0].Value = detaliuR.IdReteta;
-                    row.Cells[0].Value = detaliuR.CodW;
-                    row.Cells[1].Value = detaliuR.DenumireMedicament;
-                    row.Cells[2].Value = detaliuR.Cantitate;
-                   
+                    row.Cells[0].Value = detaliuR.ID;
+                    row.Cells[1].Value = detaliuR.IdReteta;
+                    row.Cells[2].Value = detaliuR.CodW;
+                    row.Cells[3].Value = detaliuR.DenumireMedicament;
+                    row.Cells[4].Value = detaliuR.Cantitate;
+
                     row.Tag = detaliuR;
 
                     listaDetalii.Add(detaliuR);
@@ -86,17 +90,19 @@ namespace WindowsFormsProiect
 
                     DataGridViewRow row = new DataGridViewRow();
                     row.CreateCells(dgvReteta);
-                    row.Cells[0].Value = reteta.Serie;
-                    row.Cells[1].Value = reteta.NrReteta;
-                    row.Cells[2].Value = reteta.DataReteta.ToShortDateString();
-                    row.Cells[3].Value = reteta.Parafa;
-                    row.Cells[4].Value = reteta.Cnp;
-                    row.Cells[5].Value = reteta.Categorie;
+                    row.Cells[0].Value = reteta.ID;
+                    row.Cells[1].Value = reteta.Serie;
+                    row.Cells[2].Value = reteta.NrReteta;
+                    row.Cells[3].Value = reteta.DataReteta.ToShortDateString();
+                    row.Cells[4].Value = reteta.Parafa;
+                    row.Cells[5].Value = reteta.Cnp;
+                    row.Cells[6].Value = reteta.Categorie;
                     row.Tag = reteta;
 
                     listaRetete.Add(reteta);
                     dgvReteta.Rows.Add(row);
                 }
+
             }
             catch (Exception ex)
             {
@@ -107,12 +113,14 @@ namespace WindowsFormsProiect
                 connection.Close();
             }
         }
+
+
+
         private void FormRetete_Load(object sender, EventArgs e)
         {
-            
-
             incarcareReteta();
-            incarcareDetaliu();
+            incarcareDetaliu(1);
+            panel2.Enabled = false;
         }
 
         private void dgvReteta_DoubleClick(object sender, EventArgs e)
@@ -128,9 +136,19 @@ namespace WindowsFormsProiect
                 comboCategorie.SelectedItem = updateObj.Categorie;
 
                 tabControl.SelectTab(pgDetaliuReteta);
+                panel1.Enabled = true;
+                panel2.Enabled = false;
+                btnAdauga.Enabled = false;
+                btnModificare.Enabled = true;
+                btnAdaugareDetaliu.Enabled = true;
+                btnModificareDetaliu.Enabled = false;
+                tbCod.Clear();
+                tbDenumireMed.Clear();
+                tbCantitate.Clear();
+
             }
 
-           
+
         }
 
         private void btnAdauga_Click(object sender, EventArgs e)
@@ -142,7 +160,7 @@ namespace WindowsFormsProiect
                 comanda.Connection = connection;
 
                 comanda.CommandText = "SELECT MAX(ID) FROM reteta";
-                int cod = Convert.ToInt32(comanda.ExecuteScalar());
+                cod = Convert.ToInt32(comanda.ExecuteScalar());
                 Random random = new Random();
                 comanda.CommandText = "INSERT INTO reteta VALUES(?,?,?,?,?,?,?)";
                 comanda.Parameters.Add("ID", OleDbType.Integer).Value = cod + 1;
@@ -150,18 +168,17 @@ namespace WindowsFormsProiect
                 comanda.Parameters.Add("NrReteta", OleDbType.Integer).Value = tbNr.Text;
                 comanda.Parameters.Add("DataReteta", OleDbType.Date).Value = tbData.Text;
                 comanda.Parameters.Add("Parafa", OleDbType.Char, 255).Value = tbParafa.Text;
-                comanda.Parameters.Add("CNP",OleDbType.Char, 255).Value = tbCNP.Text;
-                comanda.Parameters.Add("Categorie",OleDbType.Char, 255).Value = comboCategorie.Text;
+                comanda.Parameters.Add("CNP", OleDbType.Char, 255).Value = tbCNP.Text;
+                comanda.Parameters.Add("Categorie", OleDbType.Char, 255).Value = comboCategorie.Text;
                 comanda.ExecuteNonQuery();
+                panel2.Enabled = true;
                 btnAdaugareDetaliu.Enabled = true;
-                btnModificareDetaliu.Enabled = true;
+                btnModificareDetaliu.Enabled = false;
                 btnGolireDetaliu.Enabled = true;
-                tbCod.Enabled = true;
-                tbDenumireMed.Enabled = true;
-                tbCantitate.Enabled = true;
+
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -175,12 +192,13 @@ namespace WindowsFormsProiect
                 //comboCategorie.SelectedItem = null;
                 connection.Close();
                 incarcareReteta();
+                tbCod.Focus();
             }
         }
 
         private void btnModificare_Click(object sender, EventArgs e)
         {
-            if (verificaExistenta(updateObj.Id) == true)
+            if (verificaExistenta(updateObj.ID) == true)
             {
                 try
                 {
@@ -197,7 +215,7 @@ namespace WindowsFormsProiect
                     comanda.Parameters.Add("@Parafa", OleDbType.Char, 255).Value = tbParafa.Text;
                     comanda.Parameters.Add("@CNP", OleDbType.Char, 255).Value = tbCNP.Text;
                     comanda.Parameters.Add("@Categorie", OleDbType.Char, 255).Value = comboCategorie.Text;
-                    comanda.Parameters.Add("@ID", OleDbType.Integer).Value = updateObj.Id;
+                    comanda.Parameters.Add("@ID", OleDbType.Integer).Value = updateObj.ID;
                     comanda.ExecuteNonQuery();
                     tabControl.SelectTab(pgReteta);
                 }
@@ -207,7 +225,7 @@ namespace WindowsFormsProiect
                 }
                 finally
                 {
-                    
+
                     updateObj = null;
                     tbSerie.Clear();
                     tbNr.Clear();
@@ -243,34 +261,27 @@ namespace WindowsFormsProiect
             }
             return esteInBaza;
         }
-
-        private void dgvReteta_Click(object sender, EventArgs e)
+        private bool verificaExistenta2(int id)
         {
-
-        }
-
-        private void dgvReteta_MouseClick(object sender, MouseEventArgs e)
-        {
-            if(e.Button == MouseButtons.Right && dgvReteta.SelectedRows.Count > 0)
+            bool esteInBaza = false;
+            try
             {
-                Reteta reteta = (Reteta)dgvReteta.SelectedRows[0].Tag;
-                try
-                {
-                    connection.Open();
-                    OleDbCommand comanda = new OleDbCommand();
-                    comanda.Connection = connection;
-                    comanda.CommandText = "DELETE FROM reteta WHERE ID=" + reteta.Id;
-                    comanda.ExecuteNonQuery();
-                }catch(Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    connection.Close();
-                    incarcareReteta();
-                }
+                connection.Open();
+                OleDbCommand command = new OleDbCommand();
+                command.Connection = connection;
+                command.CommandText = "SELECT COUNT(*) FROM detaliuReteta WHERE ID=" + id;
+                int count = Convert.ToInt32(command.ExecuteScalar());
+                if (count > 0) esteInBaza = true;
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return esteInBaza;
         }
 
         private void btnGolire_Click(object sender, EventArgs e)
@@ -281,14 +292,20 @@ namespace WindowsFormsProiect
             tbParafa.Clear();
             tbCNP.Clear();
             comboCategorie.SelectedItem = null;
+            btnAdauga.Enabled = true;
+            btnModificare.Enabled = false;
+            panel2.Enabled = false;
+
         }
 
         private void btnModifiareDetaliu_Click(object sender, EventArgs e)
         {
-            if (verificaExistenta(updateObj.Id) == true)
+            
+            if (verificaExistenta2(updateObj2.ID) == true)
             {
                 try
                 {
+                   
                     connection.Open();
                     OleDbCommand comanda = new OleDbCommand();
                     comanda.Connection = connection;
@@ -299,10 +316,11 @@ namespace WindowsFormsProiect
                     comanda.Parameters.Add("@codW", OleDbType.Char, 255).Value = tbCod.Text;
                     comanda.Parameters.Add("@denumireMedicament", OleDbType.Char, 255).Value = tbDenumireMed.Text;
                     comanda.Parameters.Add("@Cantitate", OleDbType.Integer).Value = tbCantitate.Text;
-                   
-                    comanda.Parameters.Add("@ID", OleDbType.Integer).Value = updateObj.Id;
+
+                    comanda.Parameters.Add("@ID", OleDbType.Integer).Value = updateObj2.ID;
                     comanda.ExecuteNonQuery();
                     tabControl.SelectTab(pgReteta);
+                    
                 }
                 catch (Exception ex)
                 {
@@ -311,12 +329,13 @@ namespace WindowsFormsProiect
                 finally
                 {
 
-                    updateObj = null;
+                    updateObj2 = null;
                     tbCod.Clear();
                     tbDenumireMed.Clear();
                     tbCantitate.Clear();
                     connection.Close();
-                    incarcareDetaliu();
+                    incarcareDetaliu(listaRetete[0].ID);
+                    
                 }
             }
         }
@@ -338,7 +357,7 @@ namespace WindowsFormsProiect
                 comanda.Parameters.Add("CodW", OleDbType.Char, 255).Value = tbCod.Text;
                 comanda.Parameters.Add("DenumireMedicament", OleDbType.Char, 255).Value = tbDenumireMed.Text;
                 comanda.Parameters.Add("Cantitate", OleDbType.Integer).Value = tbCantitate.Text;
-                
+
                 comanda.ExecuteNonQuery();
 
             }
@@ -352,8 +371,159 @@ namespace WindowsFormsProiect
                 tbDenumireMed.Clear();
                 tbCantitate.Clear();
                 connection.Close();
-                incarcareDetaliu();
+                incarcareDetaliu(listaRetete[0].ID);
+                
+                
+                DialogResult dr = MessageBox.Show("Adaugati urmatorul medicament?", "Confirmare", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
+                {
+                    tbCod.Focus();
+                } else
+                {
+                    tabControl.SelectTab(pgReteta);
+                }
             }
         }
+
+        private void dgvReteta_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            //int id = listaRetete[e.RowIndex].ID;
+            //incarcareDetaliu(id);
+        }
+
+        private void dgvDet_DoubleClick(object sender, EventArgs e)
+        {
+            if (dgvDet.SelectedRows.Count != 0)
+            {
+                updateObj2 = (DetaliuReteta)dgvDet.SelectedRows[0].Tag;
+                tbCod.Text = updateObj2.CodW;
+                tbCantitate.Text = updateObj2.Cantitate.ToString();
+                tbDenumireMed.Text = updateObj2.DenumireMedicament;
+
+                tabControl.SelectTab(pgDetaliuReteta);
+                panel1.Enabled = false;                
+                panel2.Enabled = true;
+                btnAdaugareDetaliu.Enabled = false;
+                btnAdauga.Enabled = false;
+                btnModificareDetaliu.Enabled = true;
+                tbSerie.Clear();
+                tbNr.Clear();
+                tbData.Clear();
+                tbParafa.Clear();
+                tbCNP.Clear();
+                comboCategorie.SelectedItem = null;
+
+            }
+
+        }
+
+        private void dgvDet_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            cod = Convert.ToInt32(dgvDet.Rows[e.RowIndex].Cells[0].Value.ToString());
+            int icod = Convert.ToInt32(dgvDet.Rows[e.RowIndex].Cells[1].Value.ToString());
+            scod = dgvDet.Rows[e.RowIndex].Cells[0].Value.ToString();
+            string scodmed = dgvDet.Rows[e.RowIndex].Cells[2].Value.ToString();
+            DialogResult dr = MessageBox.Show("Stergem medicamentul " + scodmed + "? ", "Confirmare", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                try
+                {
+                    connection.Open();
+                    OleDbCommand comanda = new OleDbCommand();
+                    comanda.Connection = connection;
+                    comanda.CommandText = "DELETE FROM DetaliuReteta WHERE ID=" + scod;
+                    comanda.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                    incarcareDetaliu(icod);
+                }
+
+            }
+        }
+
+        private void dgvReteta_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            scod = dgvReteta.Rows[e.RowIndex].Cells[0].Value.ToString();
+            string scodmed = dgvReteta.Rows[e.RowIndex].Cells[2].Value.ToString();
+            DialogResult dr = MessageBox.Show("Stergem reteta " + scodmed + "? ", "Confirmare", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                connection.Open();
+                OleDbCommand comanda = new OleDbCommand();
+                comanda.Connection = connection;
+                comanda.CommandText = "DELETE FROM Reteta WHERE ID=" + scod;
+                comanda.ExecuteNonQuery();
+                connection.Close();
+                dgvReteta.MultiSelect = false;
+                dgvReteta.MultiSelect = true;
+                //dgvReteta.Rows.RemoveAt(dgvReteta.SelectedRows[0].Index);
+                connection.Open();
+                OleDbCommand comanda2 = new OleDbCommand();
+                comanda2.Connection = connection;
+                comanda2.CommandText = "DELETE FROM DetaliuReteta WHERE IdReteta=" + scod;
+                comanda2.ExecuteNonQuery();
+                connection.Close();
+
+                dgvReteta.MultiSelect = false;
+                dgvReteta.MultiSelect = true;
+
+                incarcareReteta();
+                incarcareDetaliu(1);
+
+            }
+        }
+
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl.Controls[1] == tabControl.SelectedTab)
+            {
+                
+                //incarcareReteta();
+                //incarcareDetaliu(1);
+            }
+            
+        }
+
+        private void btnGolireDetaliu_Click(object sender, EventArgs e)
+        {
+            btnModificareDetaliu.Enabled = false;
+            btnAdaugareDetaliu.Enabled = true;
+            tbCod.Clear();
+            tbDenumireMed.Clear();
+            tbCantitate.Clear();
+            panel1.Enabled = true;
+            panel2.Enabled = false;
+            btnGolire.Enabled = true;
+            btnAdauga.Enabled = true;
+            btnModificare.Enabled = false;
+
+            
+        }
+
+        private void dgvReteta_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int icod = Convert.ToInt32(dgvReteta.Rows[e.RowIndex].Cells[0].Value.ToString());
+           
+           // MessageBox.Show(icod);
+            incarcareDetaliu(icod);
+        }
+
+        private void homeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void iesireToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        
     }
 }

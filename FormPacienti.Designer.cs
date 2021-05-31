@@ -100,7 +100,6 @@
             this.lvPacienti.TabIndex = 3;
             this.lvPacienti.UseCompatibleStateImageBehavior = false;
             this.lvPacienti.View = System.Windows.Forms.View.Details;
-            
             this.lvPacienti.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvPacienti_MouseClick);
             // 
             // Nume
@@ -212,9 +211,9 @@
             this.serializareXMLToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnSerializareXML,
             this.btnDeserializareXML});
-            this.serializareXMLToolStripMenuItem.Font = new System.Drawing.Font("Californian FB", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serializareXMLToolStripMenuItem.Font = new System.Drawing.Font("Lucida Calligraphy", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.serializareXMLToolStripMenuItem.Name = "serializareXMLToolStripMenuItem";
-            this.serializareXMLToolStripMenuItem.Size = new System.Drawing.Size(121, 27);
+            this.serializareXMLToolStripMenuItem.Size = new System.Drawing.Size(172, 27);
             this.serializareXMLToolStripMenuItem.Text = "Serializare XML";
             // 
             // btnSerializareXML
@@ -233,36 +232,40 @@
             // 
             // btnPrint
             // 
+            this.btnPrint.Font = new System.Drawing.Font("Lucida Calligraphy", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(53, 27);
+            this.btnPrint.Size = new System.Drawing.Size(73, 27);
             this.btnPrint.Text = "Print";
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // fisierToolStripMenuItem
             // 
+            this.fisierToolStripMenuItem.Font = new System.Drawing.Font("Lucida Calligraphy", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fisierToolStripMenuItem.Name = "fisierToolStripMenuItem";
-            this.fisierToolStripMenuItem.Size = new System.Drawing.Size(57, 27);
+            this.fisierToolStripMenuItem.Size = new System.Drawing.Size(76, 27);
             this.fisierToolStripMenuItem.Text = "Fisier";
             this.fisierToolStripMenuItem.Click += new System.EventHandler(this.fisierToolStripMenuItem_Click);
             // 
             // btnGolire
             // 
+            this.btnGolire.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(164)))), ((int)(((byte)(206)))));
             this.btnGolire.Location = new System.Drawing.Point(155, 403);
             this.btnGolire.Name = "btnGolire";
             this.btnGolire.Size = new System.Drawing.Size(109, 33);
             this.btnGolire.TabIndex = 12;
             this.btnGolire.Text = "Golire formular";
-            this.btnGolire.UseVisualStyleBackColor = true;
+            this.btnGolire.UseVisualStyleBackColor = false;
             this.btnGolire.Click += new System.EventHandler(this.btnGolire_Click);
             // 
             // btnAdaugare
             // 
+            this.btnAdaugare.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(164)))), ((int)(((byte)(206)))));
             this.btnAdaugare.Location = new System.Drawing.Point(40, 403);
             this.btnAdaugare.Name = "btnAdaugare";
             this.btnAdaugare.Size = new System.Drawing.Size(109, 33);
             this.btnAdaugare.TabIndex = 11;
             this.btnAdaugare.Text = "Adaugare";
-            this.btnAdaugare.UseVisualStyleBackColor = true;
+            this.btnAdaugare.UseVisualStyleBackColor = false;
             this.btnAdaugare.Click += new System.EventHandler(this.btnAdaugare_Click);
             // 
             // tbLocalitate

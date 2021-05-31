@@ -8,7 +8,7 @@ namespace WindowsFormsProiect
 {
     public class Reteta
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
         public string Serie { get; set; }
         public int NrReteta { get; set; }
         public DateTime DataReteta { get; set; }
@@ -18,7 +18,7 @@ namespace WindowsFormsProiect
 
         public Reteta(int id, string serie, int nrReteta, DateTime dataReteta, string parafa, string cnp, string categorie)
         {
-            Id = id;
+            ID = id;
             Serie = serie;
             NrReteta = nrReteta;
             DataReteta = dataReteta;

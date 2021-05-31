@@ -9,7 +9,7 @@ namespace WindowsFormsProiect
 {
     public class DetaliuReteta
     {   
-        public int Id { get; set; }
+        public int ID { get; set; }
         public int IdReteta { get; set; }
         public string CodW { get; set; }
         public string DenumireMedicament { get; set; }
@@ -17,7 +17,7 @@ namespace WindowsFormsProiect
 
         public DetaliuReteta(int id, int idReteta, string codW, string denumireMedicament, int cantitate)
         {
-            Id = id;
+            ID = id;
             IdReteta = idReteta;
             CodW = codW;
             DenumireMedicament = denumireMedicament;

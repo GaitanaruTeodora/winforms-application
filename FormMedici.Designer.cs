@@ -60,11 +60,18 @@
             this.epParafa = new System.Windows.Forms.ErrorProvider(this.components);
             this.pictureMedic = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureClipboard = new System.Windows.Forms.PictureBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label2 = new System.Windows.Forms.Label();
             this.cmMedici.SuspendLayout();
             this.msMedici.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epNume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epParafa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMedic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureClipboard)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvMedici
@@ -75,7 +82,6 @@
             this.Parafa,
             this.Grad,
             this.Specialitate});
-            this.lvMedici.ContextMenuStrip = this.cmMedici;
             this.lvMedici.FullRowSelect = true;
             this.lvMedici.GridLines = true;
             this.lvMedici.HideSelection = false;
@@ -192,9 +198,9 @@
             // 
             // iesireToolStripMenuItem
             // 
-            this.iesireToolStripMenuItem.Font = new System.Drawing.Font("Lucida Calligraphy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iesireToolStripMenuItem.Font = new System.Drawing.Font("Lucida Calligraphy", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iesireToolStripMenuItem.Name = "iesireToolStripMenuItem";
-            this.iesireToolStripMenuItem.Size = new System.Drawing.Size(67, 27);
+            this.iesireToolStripMenuItem.Size = new System.Drawing.Size(74, 27);
             this.iesireToolStripMenuItem.Text = "&Iesire";
             this.iesireToolStripMenuItem.Click += new System.EventHandler(this.iesireToolStripMenuItem_Click);
             // 
@@ -335,12 +341,58 @@
             this.label1.TabIndex = 22;
             this.label1.Text = "Imagine medic";
             // 
+            // pictureClipboard
+            // 
+            this.pictureClipboard.BackColor = System.Drawing.Color.White;
+            this.pictureClipboard.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureClipboard.ContextMenuStrip = this.contextMenuStrip1;
+            this.pictureClipboard.Location = new System.Drawing.Point(12, 202);
+            this.pictureClipboard.Name = "pictureClipboard";
+            this.pictureClipboard.Size = new System.Drawing.Size(100, 92);
+            this.pictureClipboard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureClipboard.TabIndex = 23;
+            this.pictureClipboard.TabStop = false;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToolStripMenuItem,
+            this.pasteToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(113, 52);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
+            this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            // 
+            // pasteToolStripMenuItem
+            // 
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
+            this.pasteToolStripMenuItem.Text = "Paste";
+            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(28, 297);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 17);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "Clipboard";
+            // 
             // FormMedici
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(909, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.pictureClipboard);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureMedic);
             this.Controls.Add(this.btnGolireFormular);
@@ -367,6 +419,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.epNume)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epParafa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMedic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureClipboard)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -403,5 +457,10 @@
         private System.Windows.Forms.ToolStripMenuItem modificareToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureMedic;
+        private System.Windows.Forms.PictureBox pictureClipboard;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
+        private System.Windows.Forms.Label label2;
     }
 }

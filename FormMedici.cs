@@ -32,6 +32,7 @@ namespace WindowsFormsProiect
             comboGrad.SelectedItem = null;
             comboSpecialitate.SelectedItem = null;
             pictureMedic.Image = null;
+            pictureClipboard.Image = null;
         }
         private void btnAdaugare_Click(object sender, EventArgs e)
         {
@@ -195,11 +196,6 @@ namespace WindowsFormsProiect
             }
         }
 
-        private void deserializareToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-          
-        }
-
         private void modificareToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (lvMedici.SelectedItems[0] != null)
@@ -243,6 +239,34 @@ namespace WindowsFormsProiect
             e.Effect = DragDropEffects.Copy;
         }
 
-        
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(pictureMedic.Image !=null)
+            {
+                Clipboard.SetImage(pictureMedic.Image);
+            }
+                   }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Graphics g = Graphics.FromHwnd(pictureClipboard.Handle);
+            IDataObject o = Clipboard.GetDataObject();
+            if(o.GetDataPresent(typeof(string)))
+            {
+                
+            }
+            else
+            {
+                if (o.GetDataPresent(typeof(Bitmap)))
+                {
+                    Bitmap bmp = (Bitmap)o.GetData(typeof(Bitmap));
+                    g.DrawImage(bmp, 0, 0);
+
+                }
+
+            }
+
+        }
+
     }
 }

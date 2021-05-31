@@ -65,43 +65,12 @@ namespace WindowsFormsProiect
                         golireFormular();
                     }
                     else
-                        MessageBox.Show("Format incorect!");
+                        MessageBox.Show("Format incorect pentru varsta!");
                 }catch(ExceptieValidare ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-                                   
-                  
-                //try
-                //{
-                //    pacient.Nume = tbNume.Text;
-                //    pacient.Prenume = tbPrenume.Text;
-
-                //    pacient.Cnp = tbCnp.Text;
-                //    if (rbFeminin.Checked)
-                //        pacient.Sex = rbFeminin.Text;
-                //    else
-                //        pacient.Sex = rbMasculin.Text;
-                //    pacient.DataNastere = dateTimePickerDataN.Value;
-                //    pacient.Localitate = tbLocalitate.Text;
-                //    if (tbVarsta.Text == "")
-                //        throw new ExceptieValidare();
-                //    else if (tbVarsta.Text.All(char.IsDigit))
-                //        pacient.Varsta = Int32.Parse(tbVarsta.Text);
-                //    else
-                //        MessageBox.Show("Format incorect!");
-                //    MessageBox.Show(pacient.ToString());
-                //    listaPacienti.Add(pacient);
-                //    golireFormular();
-
-                //}catch(ExceptieValidare ex)
-                //{
-                //    MessageBox.Show(ex.Message);
-                //}catch(Exception ex)
-                //{
-                //    MessageBox.Show(ex.Message);
-                //}
-
+                                  
             }
 
         }
@@ -230,7 +199,7 @@ namespace WindowsFormsProiect
                 FileStream file = new FileStream("pacient.xml", FileMode.Create, FileAccess.Write);
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(Pacient));
                 xmlSerializer.Serialize(file, p);
-                golireLista();
+                
                 file.Close();
                 MessageBox.Show("Serializare Xml realizata cu succes!");
             }
@@ -363,25 +332,7 @@ namespace WindowsFormsProiect
                 rbMasculin.Checked = true;
                 rbMasculin.Text = "Masculin";
 
-                if(tbCnp.Text.Substring(0, 1) == "1")
-                {
-                    //DateTime data;
-
-                    //string ex;
-                    //ex = tbCnp.Text.Substring(6, 2) + "." + tbCnp.Text.Substring(4, 2) + ".19" + tbCnp.Text.Substring(2, 2);
-                    //Console.WriteLine(ex);
-                    //dateTimePickerDataN.Value.Day = (tbCnp.Text.Substring(6, 2));
-                    //dateTimePickerDataN = DateTime.Parse(ex);
-                   
-                    //dateTimePickerDataN.Value = new DateTime(Int32.Parse(tbCnp.Text.Substring(6, 2)), Int32.Parse(tbCnp.Text.Substring(4, 2)), Int32.Parse(tbCnp.Text.Substring(2, 2)));
-                }
-                else if(tbCnp.Text.Substring(0, 1) == "5")
-                {
-                    string ex = tbCnp.Text.Substring(6, 2) + "." + tbCnp.Text.Substring(4, 2) + ".20" + tbCnp.Text.Substring(2, 2);
-                }
-
-
-
+             
             }
             else
               if ((tbCnp.Text.Substring(0, 1) == "2" || tbCnp.Text.Substring(0, 1) == "6"))
@@ -480,7 +431,7 @@ namespace WindowsFormsProiect
 
         }
 
-       
+   
     }
 
 }

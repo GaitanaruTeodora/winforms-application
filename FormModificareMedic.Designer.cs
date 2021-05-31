@@ -174,7 +174,7 @@
             this.btnRenunta.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnRenunta.Location = new System.Drawing.Point(255, 409);
             this.btnRenunta.Name = "btnRenunta";
-            this.btnRenunta.Size = new System.Drawing.Size(97, 34);
+            this.btnRenunta.Size = new System.Drawing.Size(106, 34);
             this.btnRenunta.TabIndex = 12;
             this.btnRenunta.Text = "Renunta";
             this.btnRenunta.UseVisualStyleBackColor = false;
@@ -217,14 +217,14 @@
             // serializareToolStripMenuItem
             // 
             this.serializareToolStripMenuItem.Name = "serializareToolStripMenuItem";
-            this.serializareToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.serializareToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.serializareToolStripMenuItem.Text = "Serializare";
             this.serializareToolStripMenuItem.Click += new System.EventHandler(this.serializareToolStripMenuItem_Click);
             // 
             // deserializareToolStripMenuItem
             // 
             this.deserializareToolStripMenuItem.Name = "deserializareToolStripMenuItem";
-            this.deserializareToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.deserializareToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.deserializareToolStripMenuItem.Text = "Deserializare";
             this.deserializareToolStripMenuItem.Click += new System.EventHandler(this.deserializareToolStripMenuItem_Click);
             // 

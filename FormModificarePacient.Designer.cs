@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbVarsta = new System.Windows.Forms.TextBox();
             this.tbLocalitate = new System.Windows.Forms.TextBox();
             this.lbLocalitate = new System.Windows.Forms.Label();
             this.rbMasculin = new System.Windows.Forms.RadioButton();
@@ -49,15 +51,16 @@
             this.btnRenunta = new System.Windows.Forms.Button();
             this.epNume = new System.Windows.Forms.ErrorProvider(this.components);
             this.epCnp = new System.Windows.Forms.ErrorProvider(this.components);
-            this.tbVarsta = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.epVarsta = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epNume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epCnp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epVarsta)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.tbVarsta);
             this.panel2.Controls.Add(this.tbLocalitate);
@@ -74,10 +77,28 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.dateTimePicker);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 61);
+            this.panel2.Location = new System.Drawing.Point(0, 67);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(513, 291);
+            this.panel2.Size = new System.Drawing.Size(513, 300);
             this.panel2.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(37, 197);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 17);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Varsta";
+            // 
+            // tbVarsta
+            // 
+            this.tbVarsta.Location = new System.Drawing.Point(103, 194);
+            this.tbVarsta.Name = "tbVarsta";
+            this.tbVarsta.Size = new System.Drawing.Size(147, 22);
+            this.tbVarsta.TabIndex = 12;
+            this.tbVarsta.Validating += new System.ComponentModel.CancelEventHandler(this.tbVarsta_Validating);
+            this.tbVarsta.Validated += new System.EventHandler(this.tbVarsta_Validated);
             // 
             // tbLocalitate
             // 
@@ -197,12 +218,13 @@
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(143)))), ((int)(((byte)(190)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(513, 61);
+            this.panel3.Size = new System.Drawing.Size(513, 67);
             this.panel3.TabIndex = 1;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            
             // 
             // btnModificare
             // 
@@ -242,26 +264,15 @@
             // 
             this.epCnp.ContainerControl = this;
             // 
-            // tbVarsta
+            // epVarsta
             // 
-            this.tbVarsta.Location = new System.Drawing.Point(103, 194);
-            this.tbVarsta.Name = "tbVarsta";
-            this.tbVarsta.Size = new System.Drawing.Size(147, 22);
-            this.tbVarsta.TabIndex = 12;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(37, 197);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 17);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Varsta";
+            this.epVarsta.ContainerControl = this;
             // 
             // FormModificarePacient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(143)))), ((int)(((byte)(190)))));
             this.ClientSize = new System.Drawing.Size(513, 457);
             this.Controls.Add(this.btnRenunta);
             this.Controls.Add(this.btnGolire);
@@ -275,6 +286,7 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epNume)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epCnp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epVarsta)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -303,5 +315,6 @@
         private System.Windows.Forms.ErrorProvider epCnp;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbVarsta;
+        private System.Windows.Forms.ErrorProvider epVarsta;
     }
 }

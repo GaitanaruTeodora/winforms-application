@@ -40,17 +40,7 @@ namespace WindowsFormsProiect
             FormRetete form = new FormRetete();
             this.Hide();
             form.ShowDialog();
-            this.Close();
-        }
-
-        private void btnStatistici_Click(object sender, EventArgs e)
-        {
-            //List<Pacient> listaPacienti = FormPacienti.ListaPacienti;
-            //FormStatistici form = new FormStatistici(listaPacienti);
-            FormRetete form = new FormRetete();
-            this.Hide();
-            form.ShowDialog();
-            this.Close();
+            this.Show();
         }
 
         private void btnIesire_Click(object sender, EventArgs e)
@@ -73,7 +63,7 @@ namespace WindowsFormsProiect
 
                 this.Hide();
                 form.ShowDialog();
-                this.Close();
+                this.Show();
             }
            
         }
